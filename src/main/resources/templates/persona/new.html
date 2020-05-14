@@ -1,0 +1,16 @@
+<form action="#" th:action="@{/persona/create}" th:object=${persona} method="post">
+	<p>
+		Nombre: <input type="text" th:field="*{nombre}" />
+	</p>
+	<p>
+		Apellido: <input type="text" th:field="*{apellido}" />
+	</p>
+	<p>
+		Edad: <input type="date" th:field="*{fechaNacimiento}"/>
+	</p>
+	<p>
+		Dni: <input type="text" th:field="*{dni}" />
+	</p>
+	<input type="submit" value="Crear" />
+	<!-- p para parrafo, imput para agregar, submit para el boton -->
+</form>

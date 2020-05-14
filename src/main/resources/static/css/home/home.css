@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;    
+}
+header{
+    padding:75px 0;
+    background: rgb(49, 56, 138);
+    color:rgb(235, 235, 235);
+    text-align: center;
+    font-family: Arial, "Helvetica Neue", Helvetica;
+}
+h1{
+    font-size: 3em;
+    padding-bottom: 15px;
+}
+.buttons{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons div{
+    margin:0px 20px;
+}
+a{
+    text-decoration:none;
+    color:white;
+    padding:15px 30px;
+    background: rgb(59, 133, 218);
+    border-radius: 2px;
+}
+a:hover{
+    box-shadow: inset 0px 0px 13px rgba(59, 59, 59, 0.486);
+}

@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Arial, "Helvetica Neue", Helvetica;
+}
+.buttons{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons div{
+    margin:0px 20px;
+}
+div > a{
+    text-decoration:none;
+    color:white;
+    padding:15px 30px;
+    background: rgb(59, 133, 218);
+    border-radius: 2px;
+}
+div a:hover{
+    box-shadow: inset 0px 0px 13px rgba(59, 59, 59, 0.486);
+}
