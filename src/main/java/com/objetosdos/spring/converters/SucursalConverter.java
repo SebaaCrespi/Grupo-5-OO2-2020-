@@ -1,8 +1,11 @@
 package com.objetosdos.spring.converters;
 
+import org.springframework.stereotype.Component;
+
 import com.objetosdos.spring.entities.Sucursal;
 import com.objetosdos.spring.models.SucursalModel;
 
+@Component
 public class SucursalConverter {
 	
 	public SucursalModel entityToModel(Sucursal sucursal) {

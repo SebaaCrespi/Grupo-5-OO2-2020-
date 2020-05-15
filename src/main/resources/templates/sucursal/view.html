@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/view-id.css" th:href="@{/css/view-id.css}" rel="stylesheet" />
+    <title>Sucursal</title>
+</head>
+<body>
+    <div class="view-id">
+        <form action="#" th:action="@{/sucursal/save}" th:object=${sucursal} method="post">
+            <input type="hidden" th:field="*{id}">
+            <label>Telefono</label>
+            <input type="text" th:field="*{telefono}">
+            <div class="buttons-view">
+                <input type="submit" value="Actualizar datos" class="update">
+                <a th:href="@{/sucursal/delete/{id}(id=${sucursal.id})}" class="remove">Eliminar sucursal</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
