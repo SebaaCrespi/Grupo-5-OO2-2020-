@@ -10,7 +10,11 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Vendedor extends Empleado{
+	
+	
 	private float plus;
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idsucursal", nullable=false) // En la tala vendedor se relaciona con idsucursal la sucursal
 	private Sucursal sucursal;
@@ -22,17 +26,27 @@ public class Vendedor extends Empleado{
 		this.plus = plus;
 		this.sucursal = sucursal;
 	}
+
+
 	public float getPlus() {
 		return plus;
 	}
+
+
 	public void setPlus(float plus) {
 		this.plus = plus;
 	}
+
+
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
+
+
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
 	}
+
+	
 	
 }

@@ -1,4 +1,6 @@
 package com.objetosdos.spring.controllers;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import com.objetosdos.spring.services.IPersonaService;
 @Controller
 @RequestMapping("/persona")
 public class PersonaController {
+	
+	
 
 	@Autowired
 	private IPersonaService personaService;
@@ -23,7 +27,7 @@ public class PersonaController {
 	@GetMapping("")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERSON_INDEX);// carga un string que tiene una direecion en
-																		// el template.
+																			// el template.
 		mAV.addObject("persons", personaService.getAll()); // agrega un objetos
 		return mAV;
 	}
@@ -34,17 +38,44 @@ public class PersonaController {
 		mAV.addObject("persona", new PersonaModel());
 		return mAV;
 	}
+	
+	
+
+
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("persona") PersonaModel personModel) { //
-		System.out.println(personModel);
 		personaService.insertOrUpdate(personModel);
 		return new RedirectView(ViewRouteHelper.PERSONA_ROOT);
 	}
 
+	
 	@GetMapping("/{id}") // le colocas el valor
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERSON_UPDATE);
-		mAV.addObject("persona", personaService.findById(id));
+		mAV.addObject("persona", personaService.findByIdPersona(id));
 		return mAV;
 	}
+	
+	
+	@PostMapping("/update")
+	public RedirectView update(@ModelAttribute("persona") PersonaModel personModel,int idPersona) { //
+		System.out.println(idPersona);
+		personaService.insertOrUpdate(personModel);
+		return new RedirectView(ViewRouteHelper.PERSONA_ROOT);
+	}
+
+	
+	@PostMapping("/delete/{id}")
+	public RedirectView delete(@PathVariable("id") int id) {
+		personaService.remove(id);
+		return new RedirectView(ViewRouteHelper.PERSONA_ROOT);
+	}
+	
+	@GetMapping("/nombre/{name}")
+	public ModelAndView getByName(@PathVariable("name") String nombre) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERSON_UPDATE);
+		mAV.addObject("persona", personaService.findByNombre(nombre));
+		return mAV;
+	}
+	
 }

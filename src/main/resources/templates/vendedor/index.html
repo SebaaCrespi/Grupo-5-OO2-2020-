@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENDEDORES</title>
+</head>
+<body>
+    <header>
+        <h2>Vendedor</h2>
+    </header>
+    <div class="vendedores">
+        <table>
+            <tr th:each="g : ${vendedor}">
+                <td><span th:text="${g.nombre}"></td>
+                <td><span th:text="${g.apellido}"></td>
+                <td>
+                    <a th:href="@{/vendedor/{id}(id=${g.idPersona})}">View</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div><a th:href="@{/vendedor/new}">Agregar vendedor</a></div>
+</body>
+</html>

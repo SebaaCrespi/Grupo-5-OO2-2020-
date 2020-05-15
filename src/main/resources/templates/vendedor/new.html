@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendedor</title>
+</head>
+<body>
+    <form action="#" th:action="@{/vendedor/save}" th:object=${vendedor} method="post">
+        <p>
+            Nombre: <input type="text" th:field="*{nombre}" />
+        </p>
+        <p>
+            Apellido: <input type="text" th:field="*{apellido}" />
+        </p>
+        <p>
+            Fecha de Nacimiento: <input type="date" th:field="*{fechaNacimiento}"/>
+        </p>
+        <p>
+            Dni: <input type="text" th:field="*{dni}" />
+        </p>
+        <p>
+            Horas por jornada: <input type="text" th:field="*{horasPorJornada}" />
+        </p>
+        <p>
+            Sueldo Basico: <input type="text" th:field="*{sueldoBasico}" />
+        </p>
+        <input type="submit" value="Crear" />
+    </form>
+</body>
+</html>

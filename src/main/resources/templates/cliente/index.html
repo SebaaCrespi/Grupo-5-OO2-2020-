@@ -1,0 +1,38 @@
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+</head>
+
+
+<body>
+	<div class="container mt-4">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>NOMBRE</th>
+					<th>APELLIDO</th>
+					<th>DNI</th>
+					<th>FECHA DE NACIMIENTO</th>
+					<th>MAIL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente : ${clientes}">
+					<td><span th:text="${cliente.nombre}" /></td>
+					<td><span th:text="${cliente.apellido}" /></td>
+					<td><span th:text="${cliente.dni}" /></td>
+					<td><span th:text="${cliente.fechaNacimiento}" /></td>
+					<td><span th:text="${cliente.mail}" /></td>
+					
+					<td><a class="btn btn-outline-info"th:href="@{/cliente/{id}(id=${cliente.idPersona})}">View</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class= "btn btn-link"th:href="@{/cliente/new}">Create new cliente</a>
+	</div>
+
+</body>
