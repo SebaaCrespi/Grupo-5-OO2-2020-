@@ -9,7 +9,6 @@ import com.objetosdos.spring.converters.ClienteConverter;
 import com.objetosdos.spring.entities.Cliente;
 import com.objetosdos.spring.models.ClienteModel;
 import com.objetosdos.spring.repositories.IClienteRepository;
-import com.objetosdos.spring.repositories.IPersonaRepository;
 import com.objetosdos.spring.services.IClienteService;
 
 @Service
@@ -17,9 +16,6 @@ public class ClienteService implements IClienteService {
 
 	@Autowired
 	private IClienteRepository clienteRepo;
-
-	@Autowired
-	private IPersonaRepository personaRepo;
 
 	@Autowired
 	private ClienteConverter clienteConverter;
@@ -56,7 +52,7 @@ public class ClienteService implements IClienteService {
 	}
 
 	@Override
-	public boolean remove(int id) {
+	public boolean remove(int id){
 		try {
 			clienteRepo.deleteById(id);
 			return true;

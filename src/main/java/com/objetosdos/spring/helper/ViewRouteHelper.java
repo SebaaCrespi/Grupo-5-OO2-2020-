@@ -23,7 +23,6 @@ public class ViewRouteHelper {
 	//GERENTE
 	public final static String GERENTE_INDEX="gerente/index";
 	public final static String GERENTE_NEW="gerente/new";
-	public final static String GERENTE_UPDATE="gerente/update";
 	public final static String GERENTE_REMOVE="gerente/remove";
 	public final static String GERENTE_ID="gerente/view";
 
@@ -31,8 +30,8 @@ public class ViewRouteHelper {
 	//VENDEDOR
 	public final static String VENDEDOR_INDEX="vendedor/index";
 	public final static String VENDEDOR_NEW="vendedor/new";
-	public final static String 	VENDEDOR_UPDATE="vendedor/update";
-	public final static String 	VENDEDOR_REMOVE="vendedor/remove";
+	public final static String VENDEDOR_UPDATE="vendedor/update";
+	public final static String VENDEDOR_REMOVE="vendedor/remove";
 	public final static String VENDEDOR_ID="vendedor/view";
 
 	//SUCURSAL

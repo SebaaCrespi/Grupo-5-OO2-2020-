@@ -3,9 +3,7 @@ package com.objetosdos.spring.services;
 import java.util.List;
 
 import com.objetosdos.spring.entities.Cliente;
-import com.objetosdos.spring.entities.Persona;
 import com.objetosdos.spring.models.ClienteModel;
-import com.objetosdos.spring.models.PersonaModel;
 
 public interface IClienteService {
 

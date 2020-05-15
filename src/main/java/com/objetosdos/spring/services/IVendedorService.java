@@ -2,9 +2,7 @@ package com.objetosdos.spring.services;
 
 import java.util.List;
 
-import com.objetosdos.spring.entities.Gerente;
 import com.objetosdos.spring.entities.Vendedor;
-import com.objetosdos.spring.models.GerenteModel;
 import com.objetosdos.spring.models.VendedorModel;
 
 public interface IVendedorService {

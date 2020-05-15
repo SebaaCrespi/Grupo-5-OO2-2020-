@@ -13,16 +13,12 @@ public interface IPersonaService {
 	
 	public List<Persona> getAll();
 	
-	public PersonaModel findById(int id);
+	public PersonaModel findByIdPersona(int id);
 	
-	public PersonaModel findByName(String name);
+	public PersonaModel findByNombre(String nombre);
 	
 	public PersonaModel insertOrUpdate(PersonaModel personModel);
 	
 	public boolean remove(int id);
-	
-	
-	
-	
 	
 }

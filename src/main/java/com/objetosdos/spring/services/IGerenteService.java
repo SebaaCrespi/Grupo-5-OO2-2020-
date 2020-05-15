@@ -12,4 +12,6 @@ public interface IGerenteService {
     public GerenteModel insertOrUpdate(GerenteModel gerenteModel);
 
     public GerenteModel findById(int id);
+
+    public void delete(int id);
 }

@@ -23,7 +23,6 @@ public class Vendedor extends Empleado{
 	public Vendedor(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
 			float sueldoBasico, Sucursal sucursal) {
 		super(idPersona,nombre,  apellido, fechaNacimiento, dni, horasPorJornada, sueldoBasico);
-		this.plus = plus;
 		this.sucursal = sucursal;
 	}
 
@@ -31,7 +30,6 @@ public class Vendedor extends Empleado{
 	public float getPlus() {
 		return plus;
 	}
-
 
 	public void setPlus(float plus) {
 		this.plus = plus;
