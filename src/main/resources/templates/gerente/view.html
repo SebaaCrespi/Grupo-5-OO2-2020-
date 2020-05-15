@@ -22,15 +22,17 @@
             <input type="text" th:field="*{horasPorJornada}">
             <label>Sueldo básico</label>
             <input type="text" th:field="*{sueldoBasico}">
-            <div class="buttons-view">
+            <div class="buttons-view" id="update">
                 <input type="submit" value="Actualizar datos" class="update">
             </div>
         </form>
-        <form action="#" th:action="@{/gerente/remove/{id}(id=${gerente.idPersona})}">
-            <div class="buttons-view">
-                <input type="submit" value="Eliminar gerente" class="remove" />
-            </div>
-        </form>
+        <div id="remove">
+            <form action="#" th:action="@{/gerente/remove/{id}(id=${gerente.idPersona})}">
+                <div class="buttons-view">
+                    <input type="submit" value="Eliminar gerente" class="remove" />
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
