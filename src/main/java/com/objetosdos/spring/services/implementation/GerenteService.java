@@ -31,5 +31,9 @@ public class GerenteService implements IGerenteService{
         Gerente gerente = gerenteRepository.save(gerenteConverter.modelToEntity(gerenteModel));
         return gerenteConverter.entityToModel(gerente);
     }
+    @Override
+    public void delete(int id){
+        gerenteRepository.deleteById(id);
+    }
     
 }

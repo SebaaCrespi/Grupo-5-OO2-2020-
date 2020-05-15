@@ -22,7 +22,7 @@ public class PersonaService  implements IPersonaService{
  	private PersonaConverter personaConverter;
 
 	@Override
-	public PersonaModel findById(int id) {
+	public PersonaModel findByIdPersona(int id) {
 		return personaConverter.entityToModel(personaRepository.findById(id));
 		
 	}
@@ -33,7 +33,7 @@ public class PersonaService  implements IPersonaService{
 	}
 
 	@Override
-	public PersonaModel findByName(String nombre) {
+	public PersonaModel findByNombre(String nombre) {
 		return personaConverter.entityToModel(personaRepository.findByNombre(nombre));
 	}
 

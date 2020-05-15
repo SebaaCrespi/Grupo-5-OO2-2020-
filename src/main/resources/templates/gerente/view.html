@@ -24,7 +24,11 @@
             <input type="text" th:field="*{sueldoBasico}">
             <div class="buttons-view">
                 <input type="submit" value="Actualizar datos" class="update">
-                <a th:href="@{/gerente/remove/{gerente.idPersona}}" class="remove">Eliminar gerente</a>
+            </div>
+        </form>
+        <form action="#" th:action="@{/gerente/remove/{id}(id=${gerente.idPersona})}">
+            <div class="buttons-view">
+                <input type="submit" value="Eliminar gerente" class="remove" />
             </div>
         </form>
     </div>

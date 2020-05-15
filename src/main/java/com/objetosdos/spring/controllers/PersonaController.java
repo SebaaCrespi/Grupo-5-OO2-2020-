@@ -63,7 +63,6 @@ public class PersonaController {
 		personaService.insertOrUpdate(personModel);
 		return new RedirectView(ViewRouteHelper.PERSONA_ROOT);
 	}
-
 	
 	@PostMapping("/delete/{id}")
 	public RedirectView delete(@PathVariable("id") int id) {

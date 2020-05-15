@@ -2,8 +2,6 @@ package com.objetosdos.spring.models;
 
 import java.time.LocalDate;
 
-import com.objetosdos.spring.entities.Persona;
-
 public class ClienteModel  extends PersonaModel{ // persona o personamodel?
 	
 	private String mail;
