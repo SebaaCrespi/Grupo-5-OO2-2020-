@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GerenteService implements IGerenteService{
+
     @Autowired
 	private IGerenteRepository gerenteRepository;
     @Autowired
