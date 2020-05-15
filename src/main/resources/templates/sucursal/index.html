@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursal</title>
+</head>
+<body>
+    <header>
+        <h2>Sucursales</h2>
+    </header>
+    <div class="gerentes">
+        <table>
+            <tr th:each="s : ${sucursal}">
+            	<td><span th:text="${s.id}"></td>
+                <td><span th:text="${s.telefono}"></td>
+                <td>
+                    <a th:href="@{/sucursal/{id}(id=${s.id})}">View</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div><a th:href="@{/sucursal/new}">Agregar sucursal</a></div>
+</body>
+</html>

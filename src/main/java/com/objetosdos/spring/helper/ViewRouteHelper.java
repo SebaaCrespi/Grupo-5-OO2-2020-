@@ -22,10 +22,15 @@ public class ViewRouteHelper {
 	public final static String GERENTE_REMOVE="gerente/remove";
 	public final static String GERENTE_ID="gerente/view";
 
+	//SUCURSAL
+	public final static String LOCAL_INDEX="sucursal/index";
+	public final static String LOCAL_NEW="sucursal/new";
+	public final static String LOCAL_ID="sucursal/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
 	public final static String PERSONA_ROOT = "/persona";
 	public final static String GERENTE_ROOT = "/gerente";
 	public final static String EMPLEADO_ROOT = "/empleado";
+	public final static String LOCAL_ROOT = "/sucursal";
 }
