@@ -2,10 +2,10 @@ package com.objetosdos.spring.services.implementation;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.objetosdos.spring.converters.VendedorConverter;
-import com.objetosdos.spring.entities.Gerente;
 import com.objetosdos.spring.entities.Vendedor;
 import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.repositories.IVendedorRepository;
@@ -14,7 +14,9 @@ import com.objetosdos.spring.services.IVendedorService;
 @Service
 public class VendedorService implements IVendedorService{
 	
+	@Autowired
 	private IVendedorRepository vendedorRepository;
+	@Autowired
 	private VendedorConverter vendedorConverter;
 
 	@Override

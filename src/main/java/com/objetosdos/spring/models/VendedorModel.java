@@ -2,10 +2,6 @@ package com.objetosdos.spring.models;
 
 import java.time.LocalDate;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.objetosdos.spring.entities.Sucursal;
 
 public class VendedorModel extends EmpleadoModel{
@@ -16,12 +12,9 @@ public class VendedorModel extends EmpleadoModel{
 	public VendedorModel() {super ();
 	}
 	
-
-
 	public VendedorModel(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
 			float sueldoBasico, Sucursal sucursal) {
 		super(idPersona,nombre, apellido,fechaNacimiento,dni,horasPorJornada,sueldoBasico);
-		this.plus = plus;
 		this.sucursal = sucursal;
 	}
 

@@ -27,7 +27,7 @@ public class VendedorController {
         mAV.addObject("vendedor", vendedorService.getAll());
         return mAV;
     }
-    @GetMapping("new")
+    @GetMapping("/new")
     public ModelAndView newVendedor(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_NEW);
         mAV.addObject("vendedor", new VendedorModel());

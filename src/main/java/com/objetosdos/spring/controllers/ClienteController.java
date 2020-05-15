@@ -1,7 +1,5 @@
 package com.objetosdos.spring.controllers;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.ClienteModel;
-import com.objetosdos.spring.models.PersonaModel;
 import com.objetosdos.spring.services.IClienteService;
 import com.objetosdos.spring.services.IPersonaService;
 
@@ -25,9 +22,7 @@ public class ClienteController {
 	
 	@Autowired
 	private IClienteService clienteService;
-	@Autowired
-	private IPersonaService personaService;
-	
+
 	
 	@GetMapping("")
 	public ModelAndView index() {
