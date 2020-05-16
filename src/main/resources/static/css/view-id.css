@@ -27,9 +27,12 @@
     font-size: 0.9em;
     font-weight: bold;
 }
+#remove{
+    display: block;
+    margin-top:40px;
+}
 .buttons-view{
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 .buttons-view a, .buttons-view input{
     width:100%;

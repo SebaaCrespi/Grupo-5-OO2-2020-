@@ -16,14 +16,16 @@ public class Vendedor extends Empleado{
 	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idsucursal", nullable=false) // En la tala vendedor se relaciona con idsucursal la sucursal
+	@JoinColumn(name="idsucursal", nullable=true) // En la tala vendedor se relaciona con idsucursal la sucursal
 	private Sucursal sucursal;
 
-
+public Vendedor() {
+	
+}
 	public Vendedor(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico, Sucursal sucursal) {
+			float sueldoBasico,Sucursal sucursal) {
 		super(idPersona,nombre,  apellido, fechaNacimiento, dni, horasPorJornada, sueldoBasico);
-		this.sucursal = sucursal;
+		this.sucursal=sucursal;
 	}
 
 

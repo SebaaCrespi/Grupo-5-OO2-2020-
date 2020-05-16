@@ -23,6 +23,13 @@
             <input type="text" th:field="*{horasPorJornada}">
             <label>Sueldo básico</label>
             <input type="text" th:field="*{sueldoBasico}">
+            <label>Sucursal</label>
+            <td><th:block th:each="vendedor,iter : ${vendedor.sucursal}">
+						<label th:text="${vendedor.id}"></label>
+						<input type="text" th:field="*{sucursal.id}">
+						<th:block th:if= "${!iter.last}">,<th:block>
+							</th:block></td>
+
             <div class="buttons-view">
                 <input type="submit" value="Actualizar datos" class="update">
                 <a th:href="@{/vendedor/remove/{vendedor.idPersona}}" class="remove">Eliminar vendedor</a>
