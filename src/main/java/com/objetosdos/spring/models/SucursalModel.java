@@ -2,8 +2,11 @@ package com.objetosdos.spring.models;
 
 
 
+import java.util.Set;
+
 import com.objetosdos.spring.entities.Direccion;
 import com.objetosdos.spring.entities.Gerente;
+import com.objetosdos.spring.entities.Vendedor;
 
 
 public class SucursalModel {
@@ -24,6 +27,7 @@ public class SucursalModel {
 		this.ubicacion = ubicacion;
 		this.telefono = telefono;
 		this.gerente = gerente;
+		
 	}
 	public int getId() {
 		return id;

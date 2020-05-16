@@ -26,6 +26,17 @@
         <p>
             Sueldo Basico: <input type="text" th:field="*{sueldoBasico}" />
         </p>
+        
+        <label th:text = "SUCURSAL"></label><br/>
+        
+        
+             <select th:field="${vendedor.sucursal}" />
+            <option th:each="sucursal : ${sucursal}" th:value="${sucursal.id}" th:text="${sucursal.id}">
+        
+       </option>
+       </select></br>
+        
+        
         <input type="submit" value="Crear" />
     </form>
 </body>

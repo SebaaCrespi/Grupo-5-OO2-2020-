@@ -13,7 +13,7 @@ public class VendedorModel extends EmpleadoModel{
 	}
 	
 	public VendedorModel(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico, Sucursal sucursal) {
+			float sueldoBasico,Sucursal sucursal) {
 		super(idPersona,nombre, apellido,fechaNacimiento,dni,horasPorJornada,sueldoBasico);
 		this.sucursal = sucursal;
 	}
