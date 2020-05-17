@@ -1,27 +1,21 @@
 package com.objetosdos.spring.models;
 
-
-
 import java.util.Set;
-
-import com.objetosdos.spring.entities.Direccion;
-import com.objetosdos.spring.entities.Gerente;
-import com.objetosdos.spring.entities.Vendedor;
 
 
 public class SucursalModel {
 	
 	
 	private int id;
-	private Direccion ubicacion;
+	private DireccionModel ubicacion;
 	private long telefono;
-	private Gerente gerente;
-	
+	private GerenteModel gerente;
+	private Set<VendedorModel> lstVendedor;
 	public SucursalModel() {
 		
 	}
 	
-	public SucursalModel(int id, Direccion ubicacion, long telefono, Gerente gerente) {
+	public SucursalModel(int id, DireccionModel ubicacion, long telefono, GerenteModel gerente) {
 		super();
 		this.id = id;
 		this.ubicacion = ubicacion;
@@ -35,10 +29,10 @@ public class SucursalModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Direccion getUbicacion() {
+	public DireccionModel getUbicacion() {
 		return ubicacion;
 	}
-	public void setUbicacion(Direccion ubicacion) {
+	public void setUbicacion(DireccionModel ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 	public long getTelefono() {
@@ -47,13 +41,18 @@ public class SucursalModel {
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-	public Gerente getGerente() {
+	public GerenteModel getGerente() {
 		return gerente;
 	}
-	public void setGerente(Gerente gerente) {
+	public void setGerente(GerenteModel gerente) {
 		this.gerente = gerente;
 	}
-	
+	public Set<VendedorModel> getLstVendedor() {
+		return lstVendedor;
+	}
+	public void setLstVendedor(Set<VendedorModel> lstVendedor) {
+		this.lstVendedor = lstVendedor;
+	}
 	
 	
 
