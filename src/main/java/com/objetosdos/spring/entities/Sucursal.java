@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,13 +24,13 @@ public class Sucursal {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "iddireccion", nullable = true)
 	private Direccion ubicacion;
 
 	private long telefono;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "idgerente", nullable = true)
 	private Gerente gerente;
 	
@@ -45,13 +46,6 @@ public class Sucursal {
 
 	/*--------------------------------------------------*/
 
-	
-
-	public int getId() {
-		return id;
-	}
-
-
 	public Sucursal(int id, Direccion ubicacion, long telefono, Gerente gerente) {
 		super();
 		this.id = id;
@@ -60,48 +54,33 @@ public class Sucursal {
 		this.gerente = gerente;
 		
 	}
-
-
+	public int getId() {
+		return id;
+	}
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 	public Direccion getUbicacion() {
 		return ubicacion;
 	}
-
-
 	public void setUbicacion(Direccion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
-
 	public long getTelefono() {
 		return telefono;
 	}
-
-
 	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
-
-
 	public Gerente getGerente() {
 		return gerente;
 	}
-
-
 	public void setGerente(Gerente gerente) {
 		this.gerente = gerente;
 	}
-
-
 	public Set<Vendedor> getLstVendedores() {
 		return lstVendedores;
 	}
-
-
 	public void setLstVendedores(Set<Vendedor> lstVendedores) {
 		this.lstVendedores = lstVendedores;
 	}

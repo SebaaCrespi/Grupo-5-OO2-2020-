@@ -9,6 +9,9 @@ public class DireccionModel {
 	private float latitud;
 	private float longitud;
 	
+	public DireccionModel(){
+		
+	}
 	public DireccionModel(int iddireccion, String ciudad, String calle, int numero, float latitud, float longitud) {
 		super();
 		this.iddireccion = iddireccion;
