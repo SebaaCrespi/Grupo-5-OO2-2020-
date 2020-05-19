@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sucursal</title>
+    <link href="../../static/css/new.css" th:href="@{/css/new.css}" rel="stylesheet" />
+    <title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-    <form action="#" th:action="@{/sucursal/save}" th:object="${sucursal}" method="post">
-        <label>Telefono</label>
-        <input type="text" th:field="*{telefono}" />
-        <label>Ciudad</label>
-        <input type="text" th:field="${direccion.ciudad}" />
-        <label>Calle</label>
-        <input type="text" th:field="${direccion.calle}" />
-        <label>Numero</label>
-        <input type="text" th:field="${direccion.numero}" />
-        <label>Latitud</label>
-        <input type="text" th:field="${direccion.latitud}" />
-        <label>Longitud</label>
-        <input type="text" th:field="${direccion.longitud}" />
-        <label>Gerente</label>
-        <select th:field="*{gerente.idPersona}">
-            <option th:each="g : ${gerentes}" th:value="${g.idPersona}" th:text="${g.nombre}"></option>
-        </select>
-        <input type="submit" value="Crear" />
-    </form>
+   <div class="container">
+        <form action="#" th:action="@{/sucursal/save}" th:object="${sucursal}" method="post">
+            <label>Telefono</label>
+            <input type="text" th:field="*{telefono}" />
+            <label>Ciudad</label>
+            <input type="text" th:field="${direccion.ciudad}" />
+            <label>Calle</label>
+            <input type="text" th:field="${direccion.calle}" />
+            <label>Numero</label>
+            <input type="text" th:field="${direccion.numero}" />
+            <label>Latitud</label>
+            <input type="text" th:field="${direccion.latitud}" />
+            <label>Longitud</label>
+            <input type="text" th:field="${direccion.longitud}" />
+            <label>Gerente</label>
+            <select th:field="*{gerente.idPersona}">
+                <option th:each="g : ${gerentes}" th:value="${g.idPersona}" th:text="${g.nombre}"></option>
+            </select>
+            <input type="submit" value="Crear" />
+        </form>
+   </div>
 </body>
 </html>

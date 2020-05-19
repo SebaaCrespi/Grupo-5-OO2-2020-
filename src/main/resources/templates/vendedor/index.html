@@ -1,47 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VENDEDORES</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"  href="../../static/css/list.css" th:href="@{/css/list.css}">
+    <title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-	<header>
-		<h2>Vendedor</h2>
-	</header>
-	<div class="vendedores">
-		<table>
-			<thead>
-				<tr>
-					<th>NOMBRE</th>
-					<th>APELLIDO</th>
-					<th>SUCURSAL</th>
+	<div class="container">
+		<div class="table">
+			<div class="title">
+				<h2>Vendedor</h2>
+			</div>
+			<table>
+				<tr class="strong">
+					<td>NOMBRE</td>
+					<td>APELLIDO</td>
+					<td>SUCURSAL</td>
+					<td>VER</td>
+					<td>ELIMINAR</td>
 				</tr>
-			</thead>
-			<tr th:each="g : ${vendedor}">
-				<td><span th:text="${g.nombre}"></td>
-				<td><span th:text="${g.apellido}"></td>
-
-				<td><th:block th:each="vendedor,iter : ${g.sucursal}">
-						<label th:text="${vendedor.id}"></label>
-						<th:block th:if= "${!iter.last}">,<th:block>
-							</th:block></td>
-
-				</td>
-
-
-
-
-
-
-				<td><a th:href="@{/vendedor/{id}(id=${g.idPersona})}">View</a>
-				</td>
-			</tr>
-		</table>
+				<tr th:each="g : ${vendedor}">
+					<td th:text="${g.nombre}"></td>
+					<td th:text="${g.apellido}"></td>
+					<td><th:block th:each="sucursal,iter : ${g.sucursal}">
+							<label th:text="${sucursal.id}"></label>
+							<th:block th:if= "${!iter.last}">,<th:block>
+					</td>
+					<td><a th:href="@{/vendedor/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></a></td>
+					<td><a href="#" th:href="@{/vendedor/delete/{id}(id=${g.idPersona})}"></a><i class="fas fa-minus-circle"></i></a></td>
+				</tr>
+			</table>
+			<div class="add-btn"><a th:href="@{/vendedor/new}">Agregar</a></div>
+		</div>
 	</div>
-	<div>
-		<a th:href="@{/vendedor/new}">Agregar vendedor</a>
-	</div>
+	<script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#add-btn').click(()=>{
+            $('#add-btn').toggleClass("btn-effect");
+        });
+    </script>
 </body>
 </html>

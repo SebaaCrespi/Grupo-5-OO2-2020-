@@ -1,38 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"  href="../../static/css/list.css" th:href="@{/css/list.css}">
+    <title>GRUPO 5 OO2 2020</title>
 </head>
-
-
 <body>
-	<div class="container mt-4">
-
-		<table class="table">
-			<thead>
-				<tr>
-					<th>NOMBRE</th>
-					<th>APELLIDO</th>
-					<th>DNI</th>
-					<th>FECHA DE NACIMIENTO</th>
-					<th>MAIL</th>
+	<div class="container">
+        <div class="table">
+            <div class="title">
+                <h2>Clientes</h2>
+			</div>
+			<table>
+				<tr class="strong">
+					<td>NOMBRE</td>
+					<td>APELLIDO</td>
+					<td>DNI</td>
+					<td>FECHA DE NACIMIENTO</td>
+					<td>MAIL</td>
+					<td>VER</td>
+					<td>ELIMINAR</td>
 				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="cliente : ${clientes}">
-					<td><span th:text="${cliente.nombre}" /></td>
-					<td><span th:text="${cliente.apellido}" /></td>
-					<td><span th:text="${cliente.dni}" /></td>
-					<td><span th:text="${cliente.fechaNacimiento}" /></td>
-					<td><span th:text="${cliente.mail}" /></td>
-					
-					<td><a class="btn btn-outline-info"th:href="@{/cliente/{id}(id=${cliente.idPersona})}">View</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<a class= "btn btn-link"th:href="@{/cliente/new}">Create new cliente</a>
+					<tr th:each="cliente : ${clientes}">
+						<td th:text="${cliente.nombre}"></td>
+						<td th:text="${cliente.apellido}" ></td>
+						<td th:text="${cliente.dni}" ></td>
+						<td th:text="${cliente.fechaNacimiento}"></td>
+						<td th:text="${cliente.mail}" ></td>
+						<td><a th:href="@{/cliente/{id}(id=${cliente.idPersona})}"><i class="fas fa-eye"></i></a>
+						</td>
+						<td>
+							<a href="#" th:href="@{/cliente/delete/{id}(id=${cliente.idPersona})}"></a><i class="fas fa-minus-circle"></i></a>
+						</td>
+					</tr>
+			</table>
+			<div class="add-btn"><a th:href="@{/cliente/new}">Agregar</a></div>
+		</div>
 	</div>
-
+	<script src="../../static/js/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#add-btn').click(()=>{
+            $('#add-btn').toggleClass("btn-effect");
+        });
+    </script>
 </body>

@@ -13,7 +13,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.ClienteModel;
 import com.objetosdos.spring.services.IClienteService;
-import com.objetosdos.spring.services.IPersonaService;
 
 
 @Controller
@@ -35,7 +34,6 @@ public class ClienteController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CLIENTE_NEW);
 		mAV.addObject("cliente", new ClienteModel());
-		
 		return mAV;
 	}
 	

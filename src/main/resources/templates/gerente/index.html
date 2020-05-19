@@ -3,23 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerentes</title>
+    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"  href="../../static/css/list.css" th:href="@{/css/list.css}">
+    <title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-    <header>
-        <h2>Gerentes</h2>
-    </header>
-    <div class="gerentes">
-        <table>
-            <tr th:each="g : ${gerente}">
-                <td><span th:text="${g.nombre}"></td>
-                <td><span th:text="${g.apellido}"></td>
-                <td>
-                    <a th:href="@{/gerente/{id}(id=${g.idPersona})}">View</a>
-                </td>
-            </tr>
-        </table>
+    <div class="container">
+        <div class="table">
+            <div class="title">
+                <h2>Gerentes</h2>
+            </div>
+            <table>
+                <tr class="strong">
+                    <td>ID</td>
+                    <td>NOMBRE</td>
+                    <td>APELLIDO</td>
+                    <td>VER</td>
+                    <td>ELIMINAR</td>
+                </tr>
+                <tr th:each="g : ${gerente}">
+                    <td th:text="${g.idPersona}"></td>
+                    <td th:text="${g.nombre}"></td>
+                    <td th:text="${g.apellido}"></td>
+                    <td>
+                        <a th:href="@{/gerente/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></i></a>
+                    </td>
+                    <td>
+                        <a href="#" th:href="@{/gerente/delete/{id}(id=${gerente.idPersona})}"></a><i class="fas fa-minus-circle"></i></a>
+                    </td>
+                </tr>
+            </table>
+            <div class="add-btn"><a th:href="@{/gerente/new}" id="add-btn">Agregar</a></div>
+        </div>
     </div>
-    <div><a th:href="@{/gerente/new}">Agregar gerente</a></div>
+<script src="../../static/js/jquery-3.4.1.min.js"></script>
+<script>
+    $('#add-btn').click(()=>{
+        $('#add-btn').toggleClass("btn-effect");
+    });
+</script>
 </body>
 </html>
