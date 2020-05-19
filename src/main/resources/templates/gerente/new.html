@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerente</title>
+    <link href="../../static/css/new.css" th:href="@{/css/new.css}" rel="stylesheet" />
+    <title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-    <form action="#" th:action="@{/gerente/save}" th:object=${gerente} method="post">
-        <p>
-            Nombre: <input type="text" th:field="*{nombre}" />
-        </p>
-        <p>
-            Apellido: <input type="text" th:field="*{apellido}" />
-        </p>
-        <p>
-            Fecha de Nacimiento: <input type="date" th:field="*{fechaNacimiento}"/>
-        </p>
-        <p>
-            Dni: <input type="text" th:field="*{dni}" />
-        </p>
-        <p>
-            Horas por jornada: <input type="text" th:field="*{horasPorJornada}" />
-        </p>
-        <p>
-            Sueldo Basico: <input type="text" th:field="*{sueldoBasico}" />
-        </p>
-        <input type="submit" value="Crear" />
-    </form>
+    <div class="container">
+        <form action="#" th:action="@{/gerente/save}" th:object=${gerente} method="post">
+            <label>Nombre</label>
+            <input type="text" th:field="*{nombre}" />
+            <label>Apellido</label>
+            <input type="text" th:field="*{apellido}" />
+            <label>Fecha de nacimiento</label>
+            <input type="date" th:field="*{fechaNacimiento}"/>
+            <label>Dni</label>
+            <input type="text" th:field="*{dni}" />
+            <label>Horas por jornada</label>
+            <input type="text" th:field="*{horasPorJornada}" />
+            <label>Sueldo Básico</label>
+            <input type="text" th:field="*{sueldoBasico}" />
+            <input type="submit" value="Crear" />
+        </form>
+    </div>
 </body>
 </html>

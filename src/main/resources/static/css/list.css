@@ -1,0 +1,80 @@
+*{
+    padding:0;
+    margin:0;
+    font-family: Arial, Helvetica;
+}
+body{
+    background: rgb(224, 223, 223);
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+.container .table{
+    width: 90%;
+    margin-top: 5%;
+}
+.container .title{
+    background:rgb(43, 45, 83);
+    color: white;
+    padding:20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+table{
+    background: white;
+    border-collapse:collapse;
+    width:100%;
+    border: 2px solid rgb(33, 37, 82);
+    border-radius: 5px;
+}
+tr{
+    border:1px black solid;
+}
+.strong td{
+    font-weight: bold;
+    font-size: 1em;
+}
+td{
+    text-align: center;
+    border-bottom: 2px solid rgb(33, 37, 82);
+    padding:15px 20px;
+    font-size: 0.8em;
+    color:#333;
+}
+i{
+    color:#333;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+i:hover{
+    color:rgb(35, 39, 105);
+    transform: scale(1.7);
+}
+.add-btn{
+    display: grid;
+    margin:10px 0;
+    grid-template-columns: repeat(5,1fr);
+    text-align: center;
+}
+.add-btn a{
+    grid-column: 1/2;    
+    border: 2px solid rgb(47, 49, 92);
+    text-decoration: none;
+    background:rgb(43, 45, 83);
+    color:white;
+    border-radius: 8px;
+    padding:10px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.add-btn a:hover{
+    background: whitesmoke;
+    color: rgb(43, 45, 83);
+}
+.btn-effect{
+    transform: scale(0.9);
+}
