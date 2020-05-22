@@ -21,7 +21,9 @@ public class SucursalConverter {
 			sucursal.getTelefono(),
 			gerenteConverter.entityToModel(sucursal.getGerente())
 		);
-	}	
+	}
+	
+		
 	public Sucursal modelToEntity(SucursalModel sucursalModel) {
 		return new Sucursal(
 			sucursalModel.getId(),
@@ -29,5 +31,9 @@ public class SucursalConverter {
 			sucursalModel.getTelefono(),
 			gerenteConverter.modelToEntity(sucursalModel.getGerente())
 		);
-	}	
+		
+	}
+		
+
+
 }

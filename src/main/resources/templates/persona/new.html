@@ -1,16 +1,26 @@
-<form action="#" th:action="@{/persona/create}" th:object=${persona} method="post">
-	<p>
-		Nombre: <input type="text" th:field="*{nombre}" />
-	</p>
-	<p>
-		Apellido: <input type="text" th:field="*{apellido}" />
-	</p>
-	<p>
-		Edad: <input type="date" th:field="*{fechaNacimiento}"/>
-	</p>
-	<p>
-		Dni: <input type="text" th:field="*{dni}" />
-	</p>
-	<input type="submit" value="Crear" />
-	<!-- p para parrafo, imput para agregar, submit para el boton -->
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/new.css" th:href="@{/css/new.css}" rel="stylesheet" />
+    <title>GRUPO 5 OO2 2020</title>
+</head>
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/persona/create}" th:object="${persona}"
+			method="post">
+			<label>Nombre</label>
+			<input type="text" th:field="*{nombre}" />
+			<label>Apellido</label>
+			<input type="text" th:field="*{apellido}" />
+			<label>Fecha de Nacimiento</label>
+			<input type="date" th:field="*{fechaNacimiento}" />
+			<label>Dni</label>
+			<input type="text" th:field="*{dni}" />
+					
+			<input type="submit" value="Crear" />
+		</form>
+	</div>
+</body>
+

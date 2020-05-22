@@ -7,5 +7,7 @@ import com.objetosdos.spring.entities.Direccion;
 
 @Repository
 public interface IDireccionRepository extends JpaRepository <Direccion,Integer>{
+	
+	public abstract Direccion findById(int id);
 
 }

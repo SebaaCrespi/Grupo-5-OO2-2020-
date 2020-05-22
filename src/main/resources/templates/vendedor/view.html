@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <form action="#" th:action="@{/vendedor/save}" th:object=${vendedor} method="post">
-            <input type="hidden" th:field="*{idPersona}">
+            <input type="text" th:field="*{idPersona}">
             <label>Nombre</label>
             <input type="text" th:field="*{nombre}">
             <label>Apellido</label>
@@ -23,11 +23,18 @@
             <label>Sueldo básico</label>
             <input type="text" th:field="*{sueldoBasico}">
             <label>Sucursal</label>
-            <select th:field="${vendedor.sucursal}">
-                <option th:each="sucursal : ${sucursal}" th:value="${sucursal.id}" th:text="${sucursal.id}"></option>
-            </select>  
-            <input type="submit" value="Actualizar">
+            
+       	<select th:field="${vendedor.sucursal}">
+                <option th:each="s : ${sucursal}" th:value="${s.id}">
+                    <th:block th:each="ubicacion,iter : ${s.ubicacion}">
+					<label th:text="${ubicacion.ciudad}"></label>
+					<th:block th:if= "${!iter.last}"><th:block>
+                </option>
+            </select>    
+            <input type="submit" value="Crear" />
         </form>
+        
+       
     </div>
 </body>
 </html>

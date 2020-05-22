@@ -24,14 +24,14 @@ public class Sucursal {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
+	@OneToOne(cascade = CascadeType.ALL) // SI SALE MERGE ME SALE ERROR EN CREAR
     @JoinColumn(name = "iddireccion", nullable = true)
 	private Direccion ubicacion;
 
 	private long telefono;
 	
-	@OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "idgerente", nullable = true)
+	@OneToOne//(cascade = CascadeType.MERGE) //con all me falla // CON REFRESH ME DEJA USAR MAS DE UN GETENTE PARA EL MISMO // CON MERGE ME DEJA
+	@JoinColumn(name = "idgerente", unique=true) // se coloca en la  base com idgerente -- unique para que no se repita el gerente en la sucursal.
 	private Gerente gerente;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="sucursal") // una sucursal tiene muchos vendedores
@@ -40,6 +40,8 @@ public class Sucursal {
 	
 	
 	public Sucursal() {
+		
+
 		
 	}
 	

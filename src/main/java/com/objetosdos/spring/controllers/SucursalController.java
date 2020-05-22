@@ -42,17 +42,20 @@ public class SucursalController {
 	public ModelAndView newSucursal(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);
 		mAV.addObject("sucursal", new SucursalModel());
-		mAV.addObject("direccion", new DireccionModel());
-		mAV.addObject("gerentes", gerenteServices.getAll());
+		//mAV.addObject("direccion", new DireccionModel());
+		mAV.addObject("gerentes", gerenteServices.getAll());// para que vaya a buscar los gerentes que hay y los muestre
+		//mAV.addObject("direccion", direccionServices.getAll());//si lo coloco no funciona rl new
 		return mAV;
 	}
 	
 	@PostMapping("/save")
 	public RedirectView saveSucursal(
-		@ModelAttribute("sucursal") SucursalModel sucursalModel,
-		@ModelAttribute("direccion") DireccionModel direccionModel){
-		sucursalModel.setUbicacion(direccionServices.insertOrUpdate(direccionModel));
+		@ModelAttribute("sucursal") SucursalModel sucursalModel) {
+		//@ModelAttribute("direccion") DireccionModel direccionModel){
+		//sucursalModel.setUbicacion(direccionServices.insertOrUpdate(direccionModel));
 		sucursalServices.insertOrUpdate(sucursalModel);
+		
+		
 		return new RedirectView(ViewRouteHelper.LOCAL_ROOT);
 	}
 	
@@ -61,6 +64,9 @@ public class SucursalController {
 	public ModelAndView sucursal(@PathVariable("id") int id){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_ID);
 		mAV.addObject("sucursal", sucursalServices.findById(id));
+		//mAV.addObject("direccion", direccionServices.findById(id)); SO HABILITO ESTE ME SALE NULL EN VIEW
+		//mAV.addObject("direccion", direccionServices.getAll());
+		mAV.addObject("gerentes", gerenteServices.getAll());
 		return mAV;
 	}
 	

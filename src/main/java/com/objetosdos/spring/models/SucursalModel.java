@@ -10,7 +10,7 @@ public class SucursalModel {
 	private DireccionModel ubicacion;
 	private long telefono;
 	private GerenteModel gerente;
-	private Set<VendedorModel> lstVendedor;
+	//private Set<VendedorModel> lstVendedor;
 	public SucursalModel() {
 		
 	}
@@ -47,6 +47,8 @@ public class SucursalModel {
 	public void setGerente(GerenteModel gerente) {
 		this.gerente = gerente;
 	}
+	
+	/*
 	public Set<VendedorModel> getLstVendedor() {
 		return lstVendedor;
 	}
@@ -54,7 +56,7 @@ public class SucursalModel {
 		this.lstVendedor = lstVendedor;
 	}
 	
-	
+	*/
 
 
 
