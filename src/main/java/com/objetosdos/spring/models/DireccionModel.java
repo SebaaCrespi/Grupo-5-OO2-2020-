@@ -1,5 +1,7 @@
 package com.objetosdos.spring.models;
 
+import com.objetosdos.spring.entities.Sucursal;
+
 public class DireccionModel {
 	
 	private int iddireccion;
@@ -8,11 +10,12 @@ public class DireccionModel {
 	private int numero;
 	private float latitud;
 	private float longitud;
+	private Sucursal sucursal;
 	
 	public DireccionModel(){
 		
 	}
-	public DireccionModel(int iddireccion, String ciudad, String calle, int numero, float latitud, float longitud) {
+	public DireccionModel(int iddireccion, String ciudad, String calle, int numero, float latitud, float longitud,Sucursal sucursal) {
 		super();
 		this.iddireccion = iddireccion;
 		this.ciudad = ciudad;
@@ -20,6 +23,7 @@ public class DireccionModel {
 		this.numero = numero;
 		this.latitud = latitud;
 		this.longitud = longitud;
+		this.sucursal = sucursal;
 	}
 	public int getIddireccion() {
 		return iddireccion;
@@ -56,6 +60,14 @@ public class DireccionModel {
 	}
 	public void setLongitud(float longitud) {
 		this.longitud = longitud;
+	}
+	
+	
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
 	}
 	
 	

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.VendedorModel;
+import com.objetosdos.spring.services.IDireccionService;
 import com.objetosdos.spring.services.ISucursalService;
 import com.objetosdos.spring.services.IVendedorService;
 
@@ -24,6 +25,9 @@ public class VendedorController {
 	
 	@Autowired
     private ISucursalService sucursalService;
+	
+	@Autowired
+    private IDireccionService direccionService;
 
     @GetMapping("")
     public ModelAndView index(){
@@ -31,27 +35,34 @@ public class VendedorController {
         //ModelAndView mAVS = new ModelAndView(ViewRouteHelper.LOCAL_INDEX);
         mAV.addObject("vendedor", vendedorService.getAll());
         mAV.addObject("sucursal", sucursalService.getAll());
+        
 
         return mAV;
     }
     @GetMapping("/new")
     public ModelAndView newVendedor(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_NEW);
-       // ModelAndView mAVS= new ModelAndView(ViewRouteHelper.LOCAL_NEW);
+       
         mAV.addObject("vendedor", new VendedorModel());
          mAV.addObject("sucursal", sucursalService.getAll());
-
+         
         return mAV;
     }
     @PostMapping("/save")
     public RedirectView saveVendedor(@ModelAttribute("vendedor") VendedorModel vendedorModel){
     	vendedorService.insertOrUpdate(vendedorModel);
+    	
         return new RedirectView(ViewRouteHelper.VENDEDOR_ROOT);
     }
     @GetMapping("/{id}")
     public ModelAndView vendedor(@PathVariable("id") int id){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_ID);
         mAV.addObject("vendedor", vendedorService.findByIdPersona(id));
+        //mAV.addObject("sucursal", sucursalService.findById(id));
+        mAV.addObject("direccion", direccionService.getAll());
+        mAV.addObject("sucursal", sucursalService.getAll());
+       
+        
         return mAV;
     }
 	

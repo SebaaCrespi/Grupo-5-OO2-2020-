@@ -15,6 +15,7 @@ public class ViewRouteHelper {
 	public final static String CLIENTE_INDEX="cliente/index";
 	public final static String CLIENTE_NEW="cliente/new";
 	public final static String CLIENTE_UPDATE="cliente/update";
+	public final static String CLIENTE_REMOVE="cliente/remove";
 
 	//EMPLEADO
 	public final static String EMPLEADO_INDEX="empleado/index";

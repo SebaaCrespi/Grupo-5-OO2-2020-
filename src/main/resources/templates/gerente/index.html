@@ -29,7 +29,7 @@
                         <a th:href="@{/gerente/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></i></a>
                     </td>
                     <td>
-                        <a href="#" th:href="@{/gerente/delete/{id}(id=${gerente.idPersona})}"></a><i class="fas fa-minus-circle"></i></a>
+                        <a href="#" th:href="@{/gerente/remove/{id}(id=${g.idPersona})}" method="post"><i class="fas fa-minus-circle"></i></a>
                     </td>
                 </tr>
             </table>

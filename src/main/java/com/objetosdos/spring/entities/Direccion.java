@@ -1,5 +1,6 @@
 package com.objetosdos.spring.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,14 +19,15 @@ public class Direccion {
 	private float latitud;
 	private float longitud;
 	
-	@OneToOne(mappedBy = "ubicacion") //ubicacion porque en la tabla sucursal direccion esta como ubicacion
+	@OneToOne(mappedBy = "ubicacion")
+	//ubicacion porque en la tabla sucursal direccion esta como ubicacion
 	private Sucursal sucursal;
 	
 	public Direccion() {
 		
 	}
-	public Direccion(int iddireccion, String ciudad, String calle, int numero, float latitud, float longitud
-			) {
+	public Direccion(int iddireccion, String ciudad, String calle, int numero, float latitud, float longitud,
+			Sucursal sucursal) {
 		super();
 		this.iddireccion = iddireccion;
 		this.ciudad = ciudad;
@@ -33,6 +35,7 @@ public class Direccion {
 		this.numero = numero;
 		this.latitud = latitud;
 		this.longitud = longitud;
+		this.sucursal=sucursal;
 		
 	}
 

@@ -15,7 +15,8 @@ public class DireccionConverter {
 			direccion.getCalle(),
 			direccion.getNumero(),
 			direccion.getLatitud(),
-			direccion.getLongitud()
+			direccion.getLongitud(),
+			direccion.getSucursal()
 			);
 	}
 	
@@ -26,7 +27,8 @@ public class DireccionConverter {
 			direccionModel.getCalle(),
 			direccionModel.getNumero(),
 			direccionModel.getLatitud(),
-			direccionModel.getLongitud()
+			direccionModel.getLongitud(),
+			direccionModel.getSucursal()
 			);
 	}
 

@@ -24,6 +24,7 @@ public class GerenteService implements IGerenteService{
     }
     @Override
     public GerenteModel findById(int id){
+    	System.out.println("EL ID DE GERENTE CUANDI BUSCA ES"+id);
         return gerenteConverter.entityToModel(gerenteRepository.findById(id));
 
     }    

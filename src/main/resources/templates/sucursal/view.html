@@ -9,18 +9,34 @@
 <body>
     <div class="container">
         <form action="#" th:action="@{/sucursal/save}" th:object=${sucursal} method="post">
-            <label>Telefono</label>
+         
+            <input type="hidden" th:field="*{id}" />
+            <label>telefono</label>
             <input type="text" th:field="*{telefono}" />
-            <label>Ciudad</label>
-            <input type="text" th:field="${direccion.ciudad}" />
+            
+            
+            <input type="hidden" th:field="*{ubicacion.iddireccion}" />
             <label>Calle</label>
-            <input type="text" th:field="${direccion.calle}" />
+            <input type="text" th:field="*{ubicacion.calle}" />
             <label>Numero</label>
-            <input type="text" th:field="${direccion.numero}" />
+            <input type="text" th:field="*{ubicacion.numero}" />
             <label>Latitud</label>
-            <input type="text" th:field="${direccion.latitud}" />
-            <label>Longitud</label>
-            <input type="text" th:field="${direccion.longitud}" />
+			<input type="text" th:field="*{ubicacion.latitud}" />
+			 <label>Longitud</label>
+			<input type="text" th:field="*{ubicacion.longitud}" />
+            
+             
+             <label>Ciudad</label>
+        
+            	<input type="text" th:field="${sucursal.ubicacion.ciudad}" />
+            
+   
+             
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            
+            
+            
+           
             <label>Gerente</label>
             <select th:field="*{gerente.idPersona}">
                 <option th:each="g : ${gerentes}" th:value="${g.idPersona}" th:text="${g.nombre}"></option>
