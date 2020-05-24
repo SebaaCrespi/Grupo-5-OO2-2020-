@@ -35,23 +35,21 @@ public class VendedorController {
         //ModelAndView mAVS = new ModelAndView(ViewRouteHelper.LOCAL_INDEX);
         mAV.addObject("vendedor", vendedorService.getAll());
         mAV.addObject("sucursal", sucursalService.getAll());
-        
-
+        mAV.addObject("return", ViewRouteHelper.ROUTE);
         return mAV;
     }
     @GetMapping("/new")
     public ModelAndView newVendedor(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_NEW);
-       
         mAV.addObject("vendedor", new VendedorModel());
-         mAV.addObject("sucursal", sucursalService.getAll());
+        mAV.addObject("sucursal", sucursalService.getAll());
+        mAV.addObject("return", ViewRouteHelper.VENDEDOR_ROOT);
          
         return mAV;
     }
     @PostMapping("/save")
     public RedirectView saveVendedor(@ModelAttribute("vendedor") VendedorModel vendedorModel){
     	vendedorService.insertOrUpdate(vendedorModel);
-    	
         return new RedirectView(ViewRouteHelper.VENDEDOR_ROOT);
     }
     @GetMapping("/{id}")
@@ -61,7 +59,7 @@ public class VendedorController {
         //mAV.addObject("sucursal", sucursalService.findById(id));
         mAV.addObject("direccion", direccionService.getAll());
         mAV.addObject("sucursal", sucursalService.getAll());
-       
+        mAV.addObject("return", ViewRouteHelper.VENDEDOR_ROOT);
         
         return mAV;
     }

@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../../static/css/new.css" th:href="@{/css/new.css}" rel="stylesheet" />
+    <link href="../../static/css/estilos.css" th:href="@{/css/estilos.css}" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
     <title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
+    <div class="return-btn"><a href="#" th:href="@{{link}(link = ${return})}"><i class="fas fa-arrow-left"></i></a></div>
     <div class="container">
         <form action="#" th:action="@{/vendedor/save}" th:object=${vendedor} method="post">
             <input type="text" th:field="*{idPersona}">

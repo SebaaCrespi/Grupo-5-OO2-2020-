@@ -33,7 +33,8 @@ public class SucursalController {
 	@GetMapping("")
 	public ModelAndView index(){
 	    ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_INDEX);
-	    mAV.addObject("sucursal", sucursalServices.getAll());
+		mAV.addObject("sucursal", sucursalServices.getAll());
+		mAV.addObject("return", ViewRouteHelper.ROUTE);
 	    return mAV;
 	}
 	 
@@ -45,6 +46,7 @@ public class SucursalController {
 		//mAV.addObject("direccion", new DireccionModel());
 		mAV.addObject("gerentes", gerenteServices.getAll());// para que vaya a buscar los gerentes que hay y los muestre
 		//mAV.addObject("direccion", direccionServices.getAll());//si lo coloco no funciona rl new
+		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
 		return mAV;
 	}
 	
@@ -67,6 +69,7 @@ public class SucursalController {
 		//mAV.addObject("direccion", direccionServices.findById(id)); SO HABILITO ESTE ME SALE NULL EN VIEW
 		//mAV.addObject("direccion", direccionServices.getAll());
 		mAV.addObject("gerentes", gerenteServices.getAll());
+		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
 		return mAV;
 	}
 	

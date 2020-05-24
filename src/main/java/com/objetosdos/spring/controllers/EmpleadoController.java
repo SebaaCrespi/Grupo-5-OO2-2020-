@@ -15,6 +15,7 @@ public class EmpleadoController {
     @GetMapping("")
     public ModelAndView index() {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.EMPLEADO_INDEX);
+        mAV.addObject("return", ViewRouteHelper.ROUTE);
         return mAV;
     }
 }

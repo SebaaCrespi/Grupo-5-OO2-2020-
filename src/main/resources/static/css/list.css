@@ -45,15 +45,6 @@ td{
     font-size: 0.8em;
     color:#333;
 }
-i{
-    color:#333;
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-i:hover{
-    color:rgb(35, 39, 105);
-    transform: scale(1.7);
-}
 .add-btn{
     display: grid;
     margin:10px 0;
@@ -77,4 +68,34 @@ i:hover{
 }
 .btn-effect{
     transform: scale(0.9);
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+form input{
+    margin:0 auto;
+    padding:0px 10px;
+    border:none;
+    background:transparent;
+    position: absolute;
+    z-index: 0;
+    cursor: pointer;
+}
+form div{
+    position: absolute;
+}
+td a i,
+td form div i{
+    z-index: 10;
+    color:#333;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+td a i:hover,
+td form div i:hover{
+    color:rgb(35, 39, 105);
+    transform: scale(1.7);
 }
