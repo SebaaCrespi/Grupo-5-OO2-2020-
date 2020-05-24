@@ -4,7 +4,6 @@ public class ViewRouteHelper {
 	
 	//HOME
 	public final static String INDEX = "home/index";
-	public final static String HELLO = "home/hello";
 	
 	//PERSONA
 	public final static String PERSON_INDEX="persona/index";
@@ -41,7 +40,7 @@ public class ViewRouteHelper {
 	public final static String LOCAL_ID="sucursal/view";
 
 	/**** Redirects ****/
-	public final static String ROUTE = "/index";
+	public final static String ROUTE = "/";
 	public final static String PERSONA_ROOT = "/persona";
 	public final static String CLIENTE_ROOT ="/cliente";
 	public final static String GERENTE_ROOT = "/gerente";

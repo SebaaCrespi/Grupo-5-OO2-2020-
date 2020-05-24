@@ -24,12 +24,14 @@ public class GerenteController {
     public ModelAndView index(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.GERENTE_INDEX);
         mAV.addObject("gerente", gerenteService.getAll());
+        mAV.addObject("return", ViewRouteHelper.EMPLEADO_ROOT);
         return mAV;
     }
     @GetMapping("new")
     public ModelAndView newGerente(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.GERENTE_NEW);
         mAV.addObject("gerente", new GerenteModel());
+        mAV.addObject("return", ViewRouteHelper.GERENTE_ROOT);
         return mAV;
     }
     @PostMapping("/save")
@@ -41,10 +43,11 @@ public class GerenteController {
     public ModelAndView gerente(@PathVariable("id") int id){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.GERENTE_ID);
         mAV.addObject("gerente", gerenteService.findById(id));
+        mAV.addObject("return", ViewRouteHelper.GERENTE_ROOT);
         return mAV;
     }
-    @GetMapping("/remove/{id}")
-    public RedirectView removeGerente(@PathVariable("id") int id){
+    @GetMapping("/delete/{id}")
+    public RedirectView deleteGerente(@PathVariable("id") int id){
         gerenteService.delete(id);
         return new RedirectView(ViewRouteHelper.GERENTE_ROOT);
     }

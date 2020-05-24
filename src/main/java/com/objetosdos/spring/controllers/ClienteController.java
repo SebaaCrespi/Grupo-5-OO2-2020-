@@ -27,6 +27,7 @@ public class ClienteController {
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CLIENTE_INDEX);// carga un string que tiene una direecion en																	// el template.
 		mAV.addObject("clientes", clienteService.getAll()); // agrega un objetos
+		mAV.addObject("return", ViewRouteHelper.ROUTE);
 		return mAV;
 	}
 	
@@ -34,13 +35,13 @@ public class ClienteController {
 	public ModelAndView create() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CLIENTE_NEW);
 		mAV.addObject("cliente", new ClienteModel());
+		mAV.addObject("return", ViewRouteHelper.CLIENTE_ROOT);
 		return mAV;
 	}
 	
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("cliente") ClienteModel clienteModel) { //
 		clienteService.insertOrUpdate(clienteModel);
-		
 		return new RedirectView(ViewRouteHelper.CLIENTE_ROOT);
 	}
 
@@ -49,6 +50,7 @@ public class ClienteController {
 	public ModelAndView get(@PathVariable("id") int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.CLIENTE_UPDATE);
 		mAV.addObject("cliente",clienteService.findByIdPersona(id));
+		mAV.addObject("return", ViewRouteHelper.CLIENTE_ROOT);
 		return mAV;
 	}
 	
