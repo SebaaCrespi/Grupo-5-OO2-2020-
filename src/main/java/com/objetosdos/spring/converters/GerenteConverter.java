@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GerenteConverter {
+	
     public Gerente modelToEntity(GerenteModel gerentemodel) {
         return new Gerente(
             gerentemodel.getIdPersona(),

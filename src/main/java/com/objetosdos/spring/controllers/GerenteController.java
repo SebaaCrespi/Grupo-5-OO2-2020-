@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/gerente")
 public class GerenteController {
+	
     @Autowired
     private IGerenteService gerenteService;
 
@@ -26,17 +27,20 @@ public class GerenteController {
         mAV.addObject("gerente", gerenteService.getAll());
         return mAV;
     }
+    
     @GetMapping("new")
     public ModelAndView newGerente(){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.GERENTE_NEW);
         mAV.addObject("gerente", new GerenteModel());
         return mAV;
     }
+    
     @PostMapping("/save")
     public RedirectView saveGerente(@ModelAttribute("gerente") GerenteModel gerenteModel){
         gerenteService.insertOrUpdate(gerenteModel);
         return new RedirectView(ViewRouteHelper.GERENTE_ROOT);
     }
+    
     @GetMapping("/{id}")
     public ModelAndView gerente(@PathVariable("id") int id){
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.GERENTE_ID);

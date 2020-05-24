@@ -77,6 +77,5 @@ public class SucursalController {
 		return new RedirectView(ViewRouteHelper.LOCAL_ROOT);
 	}
 	
-	 
-	   
+	
 }

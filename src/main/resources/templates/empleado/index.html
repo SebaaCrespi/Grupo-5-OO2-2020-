@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../static/css/estilos.css" th:href="@{/css/estilos.css}" rel="stylesheet" />
-    <title>Empleados</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../static/css/estilos.css" th:href="@{/css/estilos.css}"
+	rel="stylesheet" />
+<title>Empleados</title>
 </head>
 <body>
-    <div class="buttons">
-        <div><a th:href="@{/gerente}">Gerentes</a></div>
-        <div><a th:href="@{/vendedor}">Vendedores</a></div>
-    </div>
+	<a href="#" class="return-btn" th:href="@{/}"><i class="fas fa-arrow-left">HOME</i></a>
+	<script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+	
+
+	<div class="buttons">
+		<div>
+			<a th:href="@{/gerente}">Gerentes</a>
+		</div>
+		<div>
+			<a th:href="@{/vendedor}">Vendedores</a>
+		</div>
+	</div>
 </body>
 </html>

@@ -1,51 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet"  href="../../static/css/list.css" th:href="@{/css/list.css}">
-    <title>GRUPO 5 OO2 2020</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://kit.fontawesome.com/d25b889486.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../../static/css/list.css"
+	th:href="@{/css/list.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+<title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-    <div class="container">
-        <div class="table">
-            <div class="title">
-                <h2>Sucursales</h2>
-            </div>
-            <table>
-                <tr class="strong">
-                    <td>ID</td>
-                    <td>TELEFONO</td>
-                    <td>UBICACIÓN</td>
-                    <td>GERENTE</td>
-                    <td>VER</td>
-                    <td>ELIMINAR</td>
-                </tr>
-                <tr th:each="s : ${sucursal}">
-                    <td th:text="${s.id}"></td>
-                    <td th:text="${s.telefono}"></td>
-                    <td><th:block th:each="ubicacion,iter : ${s.ubicacion}">
-						<label th:text="${ubicacion.ciudad}"></label>
-						<th:block th:if= "${!iter.last}"><th:block>
-                    </td>
-                    <td><th:block th:each="gerente,iter : ${s.gerente}">
-						<label th:text="${gerente.apellido}"></label>
-						<th:block th:if= "${!iter.last}"><th:block>
-				    </td>
-                    <td>
-                        <a href="#" th:href="@{/sucursal/{id}(id=${s.id})}"><i class="fas fa-eye"></i></a>
-                    </td>
-                    <td>
-                        <a href="#" th:href="@{/sucursal/delete/{id}(id=${s.id})}"></a><i class="fas fa-minus-circle"></i></a>
-                    </td>
-                </tr>
-            </table>
-            <div class="add-btn"><a href="#" th:href="@{/sucursal/new}" id="add-btn">Agregar</a></div>
-        </div>
-    </div>
-    <script src="../../static/js/jquery-3.4.1.min.js"></script>
-    <script>
+
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+			<li class="page-item"><a class="page-link" th:href="@{/}">Sucursal</a></li>
+		</ul>
+	</nav>
+
+	<div class="container">
+		<div class="table">
+			<div class="title">
+				<h2>Sucursales</h2>
+			</div>
+			<table>
+				<tr class="strong">
+					<td>ID</td>
+					<td>TELEFONO</td>
+					<td>UBICACIÓN</td>
+					<td>GERENTE</td>
+					<td>VER</td>
+					<td>ELIMINAR</td>
+				</tr>
+				<tr th:each="s : ${sucursal}">
+					<td th:text="${s.id}"></td>
+					<td th:text="${s.telefono}"></td>
+					<td><th:block th:each="ubicacion,iter : ${s.ubicacion}">
+							<label th:text="${ubicacion.ciudad}"></label>
+							<th:block th:if="${!iter.last}">
+								<th:block></td>
+					<td><th:block th:each="gerente,iter : ${s.gerente}">
+							<label th:text="${gerente.apellido}"></label>
+							<th:block th:if="${!iter.last}">
+								<th:block></td>
+					<td><a href="#" th:href="@{/sucursal/{id}(id=${s.id})}"><i
+							class="fas fa-eye"></i></a></td>
+					<td><a href="#" th:href="@{/sucursal/delete/{id}(id=${s.id})}"><i
+							class="fas fa-minus-circle"></i></a></td>
+				</tr>
+			</table>
+			<div class="add-btn">
+				<a href="#" th:href="@{/sucursal/new}" id="add-btn">Agregar</a>
+			</div>
+		</div>
+	</div>
+	<script src="../../static/js/jquery-3.4.1.min.js"></script>
+	<script>
         $('#add-btn').click(()=>{
             $('#add-btn').toggleClass("btn-effect");
         });

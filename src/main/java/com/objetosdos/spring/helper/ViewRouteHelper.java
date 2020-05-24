@@ -39,6 +39,11 @@ public class ViewRouteHelper {
 	public final static String LOCAL_INDEX="sucursal/index";
 	public final static String LOCAL_NEW="sucursal/new";
 	public final static String LOCAL_ID="sucursal/view";
+	
+	//PRODUCTO
+	public final static String PRODUCTO_INDEX="producto/index";
+	public final static String PRODUCTO_NEW="producto/new";
+	public final static String PRODUCTO_ID="producto/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/index";
@@ -48,4 +53,5 @@ public class ViewRouteHelper {
 	public final static String EMPLEADO_ROOT = "/empleado";
 	public final static String LOCAL_ROOT = "/sucursal";
 	public final static String VENDEDOR_ROOT = "/vendedor";
+	public final static String PRODUCTO_ROOT = "/producto";
 }
