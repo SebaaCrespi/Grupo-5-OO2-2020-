@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -57,7 +58,7 @@ public class VendedorController {
         ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENDEDOR_ID);
         mAV.addObject("vendedor", vendedorService.findByIdPersona(id));
         //mAV.addObject("sucursal", sucursalService.findById(id));
-        mAV.addObject("direccion", direccionService.getAll());
+        //mAV.addObject("direccion", direccionService.getAll());
         mAV.addObject("sucursal", sucursalService.getAll());
         mAV.addObject("return", ViewRouteHelper.VENDEDOR_ROOT);
         
@@ -65,6 +66,7 @@ public class VendedorController {
     }
 	
     @PostMapping("/remove/{id}")
+    
 	public RedirectView remove(@PathVariable("id") int id) {
 		vendedorService.remove(id);
 		return new RedirectView(ViewRouteHelper.VENDEDOR_ROOT);
