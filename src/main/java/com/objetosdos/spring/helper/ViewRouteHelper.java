@@ -38,6 +38,20 @@ public class ViewRouteHelper {
 	public final static String LOCAL_INDEX="sucursal/index";
 	public final static String LOCAL_NEW="sucursal/new";
 	public final static String LOCAL_ID="sucursal/view";
+	
+	
+	//VENDEDOR
+		public final static String LOTE_INDEX="lote/index";
+		public final static String LOTE_NEW="lote/new";
+		public final static String LOTE_UPDATE="lote/update";
+		public final static String LOTE_REMOVE="lote/remove";
+		public final static String LOTE_ID="lote/view";
+		
+		
+		//PRODUCTO
+		public final static String PRODUCTO_INDEX="producto/index";
+		public final static String PRODUCTO_NEW="producto/new";
+		public final static String PRODUCTO_ID="producto/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/";
@@ -47,4 +61,7 @@ public class ViewRouteHelper {
 	public final static String EMPLEADO_ROOT = "/empleado";
 	public final static String LOCAL_ROOT = "/sucursal";
 	public final static String VENDEDOR_ROOT = "/vendedor";
+	public final static String LOTE_ROOT = "/lote";
+	public final static String PRODUCTO_ROOT = "/producto";
+	
 }

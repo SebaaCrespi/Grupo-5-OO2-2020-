@@ -31,7 +31,10 @@
 							<th:block th:if= "${!iter.last}"><th:block>
 					</td>
 					<td><a th:href="@{/vendedor/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></a></td>
-					<td><a href="#" th:href="@{/vendedor/delete/{id}(id=${g.idPersona})}"></a><i class="fas fa-minus-circle"></i></a></td>
+					<td><form action="#" th:action="@{/vendedor/remove/{id}(id=${g.idPersona})}" method="post">
+							<div><i class="fas fa-minus-circle"></i></div>
+							<input type="submit" value="">
+						</form></td>
 				</tr>
 			</table>
 			<div class="add-btn"><a th:href="@{/vendedor/new}">Agregar</a></div>

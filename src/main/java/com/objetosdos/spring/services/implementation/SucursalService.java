@@ -58,4 +58,17 @@ public class SucursalService implements ISucursalService{
 		sucursalRepository.deleteById(id);
 	}
 	
+	@Override
+	public double calcularDistancia(double lat1,double long1,double lat2, double long2) {
+		double radioTierra =6371; //kilometros.
+		double dLat = Math.toRadians(lat2-lat1);
+		double dLong=Math.toRadians(long2-long1);
+		double sindLat = Math.sin(dLat/2);
+		double sindLong = Math.sin(dLong/2);
+		double va1 = Math.pow(sindLat, 2) + Math.pow(sindLong, 2)* Math.cos(Math.toRadians(lat1))*Math.cos(Math.toRadians(lat2));
+		double va2=2*Math.atan2(Math.sqrt(va1), Math.sqrt(1-va1));
+		
+		return radioTierra * va2;
+		}
+	
 }

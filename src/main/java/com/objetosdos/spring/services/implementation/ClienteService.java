@@ -46,8 +46,7 @@ public class ClienteService implements IClienteService {
 	@Override
 	public ClienteModel insertOrUpdate(ClienteModel clienteModel) {
 		Cliente cliente = clienteRepo.save(clienteConverter.ModelToEntity(clienteModel)); // de repo se guarda el
-																							// cliente convertido en
-																							// persona
+																							// cliente convertido en persona																		 
 		return clienteConverter.entityToModel(cliente); // se convierte en modelo la persona.
 	}
 

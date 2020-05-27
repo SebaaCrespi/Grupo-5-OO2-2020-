@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="../../static/css/new.css" th:href="@{/css/new.css}" rel="stylesheet" />
+	<link href="../../static/css/estilos.css" th:href="@{/css/estilos.css}" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+	<title>GRUPO 5 OO2 2020</title>
+</head>
+<body>
+	<div class="return-btn"><a href="#" th:href="@{{link}(link = ${return})}"><i class="fas fa-arrow-left"></i></a></div>
+	<div class="container">
+		<form action="#" th:action="@{/lote/save}" th:object="${lote}"
+			method="post">
+
+			<label>TALLE</label> <input type="text" th:field="*{talle}" />
+			<label>CANTIDAD ACTUAL</label> <input type="text" th:field="*{cantidadActual}" />
+			<label>CANTIDAD INICIAL</label> <input type="text" th:field="*{cantidadInicial}" />
+			<label>FECHA DE INGRESO</label> <input type="date" th:field="*{fechaIngreso}" />
+
+			<label>SUCURSAL</label>
+			<select th:field="${lote.sucursal}">
+                <option th:each="s : ${sucursal}" th:value="${s.id}">
+                    <th:block th:each="ubicacion,iter : ${s.ubicacion}">
+					<label th:text="${ubicacion.ciudad}"></label>
+					<th:block th:if= "${!iter.last}"><th:block>
+                </option>
+            </select> 
+            
+            <label>PRODUCTO</label>
+			<select th:field="*{producto.id}">
+				<option th:each="p : ${producto}" th:value="${p.id}"
+					th:text="${p.descripcion}"></option>
+			</select> 
+			 <input type="submit" value="Crear" />
+		</form>
+	</div>
+</body>
+</html>

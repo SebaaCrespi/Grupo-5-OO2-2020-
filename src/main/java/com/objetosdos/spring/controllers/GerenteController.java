@@ -46,7 +46,7 @@ public class GerenteController {
         mAV.addObject("return", ViewRouteHelper.GERENTE_ROOT);
         return mAV;
     }
-    @GetMapping("/delete/{id}")
+    @GetMapping("/remove/{id}")
     public RedirectView deleteGerente(@PathVariable("id") int id){
         gerenteService.delete(id);
         return new RedirectView(ViewRouteHelper.GERENTE_ROOT);
