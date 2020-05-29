@@ -7,13 +7,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.VendedorModel;
-import com.objetosdos.spring.services.IDireccionService;
 import com.objetosdos.spring.services.ISucursalService;
 import com.objetosdos.spring.services.IVendedorService;
 
@@ -27,8 +25,6 @@ public class VendedorController {
 	@Autowired
     private ISucursalService sucursalService;
 	
-	@Autowired
-    private IDireccionService direccionService;
 
     @GetMapping("")
     public ModelAndView index(){
