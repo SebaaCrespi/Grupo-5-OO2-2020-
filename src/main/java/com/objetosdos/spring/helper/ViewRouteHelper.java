@@ -41,17 +41,22 @@ public class ViewRouteHelper {
 	
 	
 	//VENDEDOR
-		public final static String LOTE_INDEX="lote/index";
-		public final static String LOTE_NEW="lote/new";
-		public final static String LOTE_UPDATE="lote/update";
-		public final static String LOTE_REMOVE="lote/remove";
-		public final static String LOTE_ID="lote/view";
+	public final static String LOTE_INDEX="lote/index";
+	public final static String LOTE_NEW="lote/new";
+	public final static String LOTE_UPDATE="lote/update";
+	public final static String LOTE_REMOVE="lote/remove";
+	public final static String LOTE_ID="lote/view";
 		
 		
-		//PRODUCTO
-		public final static String PRODUCTO_INDEX="producto/index";
-		public final static String PRODUCTO_NEW="producto/new";
-		public final static String PRODUCTO_ID="producto/view";
+	//PRODUCTO
+	public final static String PRODUCTO_INDEX="producto/index";
+	public final static String PRODUCTO_NEW="producto/new";
+	public final static String PRODUCTO_ID="producto/view";
+	
+	//VENTA
+	public final static String VENTA_INDEX = "venta/index";
+	public final static String VENTA_NEW = "venta/new";
+	public final static String VENTA_ID = "venta/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/";
@@ -63,5 +68,6 @@ public class ViewRouteHelper {
 	public final static String VENDEDOR_ROOT = "/vendedor";
 	public final static String LOTE_ROOT = "/lote";
 	public final static String PRODUCTO_ROOT = "/producto";
+	public final static String VENTA_ROOT = "/venta";
 	
 }
