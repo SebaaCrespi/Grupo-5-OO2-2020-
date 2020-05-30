@@ -28,8 +28,6 @@ public class SucursalController {
 	@Autowired
 	private IGerenteService gerenteServices;
 	
-	
-	//public final static String LOCAL_INDEX="local/index";
 	@GetMapping("")
 	public ModelAndView index(){
 	    ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_INDEX);
@@ -38,7 +36,6 @@ public class SucursalController {
 	    return mAV;
 	}
 	 
-	//public final static String LOCAL_NEW="local/new";
 	@GetMapping("/new")
 	public ModelAndView newSucursal(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);
