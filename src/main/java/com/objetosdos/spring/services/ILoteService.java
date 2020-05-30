@@ -7,7 +7,7 @@ import com.objetosdos.spring.models.LoteModel;
 
 public interface ILoteService {
 	
-public List<Lote> getAll();
+    public List<Lote> getAll();
     
     public LoteModel insertOrUpdate(LoteModel loteModel);
 
