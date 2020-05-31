@@ -1,0 +1,22 @@
+<div class="title">
+    <h2>Lotes del stock</h2>
+</div>
+<table>
+    <tr class="strong">
+        <td>ID</td>
+        <td>PRODUCTO</td>
+        <td>MARCA</td>
+        <td>TALLE</td>
+        <td>CANTIDAD</td>
+        <td>PEDIDO</td>
+    </tr>
+    <tr>
+        <td th:text="${lote.idLote}"></td>
+        <th:block th:each="producto,iter : ${lote.producto}">
+        <td th:text="${producto.descripcion}"></td>
+        <td th:text="${producto.marca}"></td>
+        <td th:text="${lote.talle}"></td>
+        <td th:text="${lote.cantidadActual}"></td>
+        <td>seleccionar cant y vendedor (boton generar pedido)</td>
+    </tr>
+</table>

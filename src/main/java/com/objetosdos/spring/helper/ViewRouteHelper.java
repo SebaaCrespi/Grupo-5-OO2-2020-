@@ -37,21 +37,27 @@ public class ViewRouteHelper {
 	//SUCURSAL
 	public final static String LOCAL_INDEX="sucursal/index";
 	public final static String LOCAL_NEW="sucursal/new";
-	public final static String LOCAL_ID="sucursal/view";
+	public final static String LOCAL_ID="sucursal/id";
+	public final static String LOCAL_STOCK="sucursal/stock";
+	public final static String LOCAL_DESC_OPTION="sucursal/descOption";
+	public final static String LOCAL_TALLE_OPTION="sucursal/talleOption";
+	public final static String LOCAL_WITH_STOCK="sucursal/resultFilterWithStock";
+	public final static String LOCAL_WITHOUT_STOCK="sucursal/resultFilterWithOutStock";
+	public final static String LOCAL_LOTE_IN_OTHER_SUCURSAL ="sucursal/resultFilterOtherSucursal";
 	
 	
 	//VENDEDOR
-		public final static String LOTE_INDEX="lote/index";
-		public final static String LOTE_NEW="lote/new";
-		public final static String LOTE_UPDATE="lote/update";
-		public final static String LOTE_REMOVE="lote/remove";
-		public final static String LOTE_ID="lote/view";
+	public final static String LOTE_INDEX="lote/index";
+	public final static String LOTE_NEW="lote/new";
+	public final static String LOTE_UPDATE="lote/update";
+	public final static String LOTE_REMOVE="lote/remove";
+	public final static String LOTE_ID="lote/view";
 		
 		
-		//PRODUCTO
-		public final static String PRODUCTO_INDEX="producto/index";
-		public final static String PRODUCTO_NEW="producto/new";
-		public final static String PRODUCTO_ID="producto/view";
+	//PRODUCTO
+	public final static String PRODUCTO_INDEX="producto/index";
+	public final static String PRODUCTO_NEW="producto/new";
+	public final static String PRODUCTO_ID="producto/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/";

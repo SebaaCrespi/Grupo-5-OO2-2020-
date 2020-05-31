@@ -23,8 +23,6 @@ public class SucursalService implements ISucursalService{
 	private ISucursalRepository sucursalRepository;
 	@Autowired
 	private SucursalConverter sucursalConverter;
-	@Autowired
-	private ILoteService loteServices;
 	
 	@Override
 	public List<Sucursal> getAll() {
@@ -48,14 +46,16 @@ public class SucursalService implements ISucursalService{
 		sucursalRepository.deleteById(id);
 	}
 	@Override
-	public List<Lote> getLotes(int idSucursalActual){
-		List<Lote> lstLotes = new ArrayList<Lote>();
-        for(Lote lote : loteServices.getAll()){
-            if(lote.getSucursal().getId() == idSucursalActual){
-                lstLotes.add(lote);
-            }
+	public List<String> getVariedadTalle(List<Lote> lstLotes){
+		List<String> lstVariedad = new ArrayList<String>();
+		for(Lote lote : lstLotes){
+			for(String variedad : lstVariedad){
+				if(variedad != lote.getTalle()){
+					lstVariedad.add(lote.getTalle());
+				}
+			}
 		}
-		return lstLotes;
+		return lstVariedad;
 	}
 	@Override
 	public double calcularDistancia(double lat1,double long1,double lat2, double long2) {
