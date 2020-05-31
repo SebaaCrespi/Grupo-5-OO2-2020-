@@ -17,12 +17,13 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Sucursal {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@OneToOne(cascade = CascadeType.ALL) // SI SALE MERGE ME SALE ERROR EN CREAR
-    @JoinColumn(name = "iddireccion", nullable = true)
+    @JoinColumn(name = "iddireccion", nullable = true) //Crea en la tabla sucursal un campo llamado id_direccion
 	private Direccion ubicacion;
 
 	private long telefono;
@@ -37,13 +38,7 @@ public class Sucursal {
 	
 	
 	public Sucursal() {
-		
-
-		
 	}
-	
-
-	/*--------------------------------------------------*/
 
 	public Sucursal(int id, Direccion ubicacion, long telefono, Gerente gerente) {
 		super();

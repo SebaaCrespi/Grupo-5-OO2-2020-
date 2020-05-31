@@ -7,7 +7,7 @@ import com.objetosdos.spring.models.DireccionModel;
 
 public interface IDireccionService {
 	
-	public   List<Direccion> getAll();
+	public List<Direccion> getAll();
 	
 	public DireccionModel findById(int id);
 

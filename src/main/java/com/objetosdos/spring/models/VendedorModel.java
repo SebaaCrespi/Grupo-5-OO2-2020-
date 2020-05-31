@@ -9,7 +9,8 @@ public class VendedorModel extends EmpleadoModel{
 	private float plus;
 	private Sucursal sucursal;
 	
-	public VendedorModel() {super ();
+	public VendedorModel() {
+		super ();
 	}
 	
 	public VendedorModel(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
