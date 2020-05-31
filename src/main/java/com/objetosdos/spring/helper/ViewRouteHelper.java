@@ -37,7 +37,13 @@ public class ViewRouteHelper {
 	//SUCURSAL
 	public final static String LOCAL_INDEX="sucursal/index";
 	public final static String LOCAL_NEW="sucursal/new";
-	public final static String LOCAL_ID="sucursal/view";
+	public final static String LOCAL_ID="sucursal/id";
+	public final static String LOCAL_STOCK="sucursal/stock";
+	public final static String LOCAL_DESC_OPTION="sucursal/descOption";
+	public final static String LOCAL_TALLE_OPTION="sucursal/talleOption";
+	public final static String LOCAL_WITH_STOCK="sucursal/resultFilterWithStock";
+	public final static String LOCAL_WITHOUT_STOCK="sucursal/resultFilterWithOutStock";
+	public final static String LOCAL_LOTE_IN_OTHER_SUCURSAL ="sucursal/resultFilterOtherSucursal";
 	
 	
 	//VENDEDOR
@@ -52,11 +58,11 @@ public class ViewRouteHelper {
 	public final static String PRODUCTO_INDEX="producto/index";
 	public final static String PRODUCTO_NEW="producto/new";
 	public final static String PRODUCTO_ID="producto/view";
-	
+
 	//VENTA
 	public final static String VENTA_INDEX = "venta/index";
-	public final static String VENTA_NEW = "venta/new";
-	public final static String VENTA_ID = "venta/view";
+    public final static String VENTA_NEW = "venta/new";
+    public final static String VENTA_ID = "venta/view";
 
 	/**** Redirects ****/
 	public final static String ROUTE = "/";

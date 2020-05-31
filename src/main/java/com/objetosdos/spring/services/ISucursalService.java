@@ -17,8 +17,9 @@ public interface ISucursalService {
     
     public void delete(int id);
     
-    public List<Lote> getLotes(int idSucursalActual);
-    
     public double calcularDistancia(double latitud1,double long1,double lat2, double long2);
+
+    public List<String> getVariedadTalle(List<Lote> lstLotes);
+
     
 }

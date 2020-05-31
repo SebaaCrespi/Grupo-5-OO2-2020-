@@ -69,13 +69,13 @@ td{
 .btn-effect{
     transform: scale(0.9);
 }
-form{
+td form{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-form input{
+td form input{
     margin:0 auto;
     padding:0px 10px;
     border:none;
@@ -84,7 +84,7 @@ form input{
     z-index: 0;
     cursor: pointer;
 }
-form div{
+td form div{
     position: absolute;
 }
 td a i,

@@ -33,7 +33,10 @@ public class LoteModel {
 		this.fechaIngreso = fechaIngreso;
 		this.sucursal = sucursal;
 	}
-	
+	@Override
+	public String toString() {
+		return ""+idLote+" | "+producto+" | "+talle+" | ";
+	}
 	
 	
 	public int getIdLote() {

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../static/css/estilos.css" th:href="@{/css/estilos.css}" rel="stylesheet" />
+    <link rel="stylesheet"  href="../../static/css/list.css" th:href="@{/css/list.css}">
+	<script src="https://kit.fontawesome.com/d25b889486.js" crossorigin="anonymous"></script>
+	<title>GRUPO 5 OO2 2020</title>
+</head>
+<body>
+	<div class="return-btn"><a href="#" th:href="@{{link}(link = ${return})}"><i class="fas fa-arrow-left"></i></a></div>
+            <header>
+                <h2>Sucursal de <span th:text="${ubicacion.ciudad}"></span></h2>
+                <input id="idSucursal" style="display:none;" th:value="${idSucursal}">
+            </header>
+            <div class="filter">
+                <select id="marca">
+                    <option th:each="marca : ${marcas}" th:value="${marca}">
+                        <p th:text="${marca}"></p>
+                    </option>
+                </select>
+                <select id="descripcion">
+                </select>
+                <select id="talle">
+                </select>
+                <button id="buscar">Buscar</button>
+            </div>
+            <div id="lotes" class="table">
+                <div class="title">
+                    <h2>Lotes del stock</h2>
+                </div>
+                <table>
+                    <tr class="strong">
+                        <td>ID</td>
+                        <td>PRODUCTO</td>
+                        <td>MARCA</td>
+                        <td>TALLE</td>
+                        <td>CANTIDAD</td>
+                        <td>PEDIDO</td>
+                    </tr>
+                    <tr th:each="l : ${lotes}">
+                        <td th:text="${l.idLote}"></td>
+                        <th:block th:each="producto,iter : ${l.producto}">
+                        <td th:text="${producto.descripcion}"></td>
+                        <td th:text="${producto.marca}"></td>
+                        <td th:text="${l.talle}"></td>
+                        <td th:text="${l.cantidadActual}"></td>
+                        <td>seleccionar cant y vendedor (boton generar pedido)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="../../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+        <script>
+            $('#marca').change(() => {
+                var marca = $('#marca').val();
+                $.ajax({
+                    method: "GET",
+                    url: "/sucursal/filter/"+marca
+                })
+                .done((result) => {
+                    $('#descripcion').html(result);
+                })
+                .fail(()=>{
+                    alert("Error");
+                });
+            });
+            $('#descripcion').change(() => {
+                var marca = $('#marca').val();
+                var descripcion = $('#descripcion').val();
+                $.ajax({
+                    method: "GET",
+                    url: "/sucursal/filter/"+marca+'/'+descripcion
+                })
+                .done((result) => {
+                    $('#talle').html(result);
+                })
+                .fail(()=>{
+                    alert("Error");
+                });
+            });
+            $('#buscar').click(() => {
+                var id = $('#idSucursal').val();
+                var marca = $('#marca').val();
+                var descripcion = $('#descripcion').val();
+                var talle = $('#talle').val();
+                $.ajax({
+                    method: "GET",
+                    url: "/sucursal/filter/"+id+"/"+marca+"/"+descripcion+"/"+talle
+                })
+                .done((result) => {
+                    $('#lotes').html(result);
+                })
+                .fail(()=>{
+                    alert("Error");
+                });
+            });
+        </script>
+</body>
+</html>
