@@ -14,7 +14,7 @@
         <div class="buttons">
         <p ></p>
             <div><a th:href="@{/sucursal/update/{id}(id = ${sucursal.id})}">Actualizar datos</a></div>
-            <div><a th:href="@{/sucursal/}">Stock</a></div>
+            <div><a th:href="@{/sucursal/stock/{id}(id = ${sucursal.id})}">Stock</a></div>
             <div><a th:href="@{/}">Solicitud de pedidos</a></div>
             <div><a th:href="@{/}">Generar venta <i>(factura)</i></a></div>
         </div>
