@@ -44,7 +44,7 @@ public class ViewRouteHelper {
 	public final static String LOCAL_WITH_STOCK="sucursal/resultFilterWithStock";
 	public final static String LOCAL_WITHOUT_STOCK="sucursal/resultFilterWithOutStock";
 	public final static String LOCAL_LOTE_IN_OTHER_SUCURSAL ="sucursal/resultFilterOtherSucursal";
-	
+	public final static String LOCAL_VIEW = "sucursal/view";
 	
 	//VENDEDOR
 	public final static String LOTE_INDEX="lote/index";
@@ -52,8 +52,7 @@ public class ViewRouteHelper {
 	public final static String LOTE_UPDATE="lote/update";
 	public final static String LOTE_REMOVE="lote/remove";
 	public final static String LOTE_ID="lote/view";
-		
-		
+			
 	//PRODUCTO
 	public final static String PRODUCTO_INDEX="producto/index";
 	public final static String PRODUCTO_NEW="producto/new";
