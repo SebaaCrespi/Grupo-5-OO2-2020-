@@ -32,8 +32,6 @@ public class SucursalController {
 	private ILoteService loteServices;
 
 	
-	
-	//public final static String LOCAL_INDEX="local/index";
 	@GetMapping("")
 	public ModelAndView index(){
 	    ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_INDEX);
@@ -41,12 +39,32 @@ public class SucursalController {
 		mAV.addObject("return", ViewRouteHelper.ROUTE);
 	    return mAV;
 	}
+	
+	//public final static String LOCAL_INDEX="local/index";
+	@GetMapping("/{id}")
+	public ModelAndView view(@PathVariable ("id") int id){
+	    ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_VIEW);
+	    mAV.addObject("sucursal",sucursalServices.findById(id));
+		mAV.addObject("return", ViewRouteHelper.ROUTE);
+	    return mAV;
+	}
+	
+	@GetMapping("/update/{id}")
+	public ModelAndView updateSucursal(@PathVariable ("id") int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);
+		mAV.addObject("sucursal", sucursalServices.findById(id));
+		mAV.addObject("gerentes", gerenteServices.getAll());
+		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
+		return mAV;
+	}
+	
 	@GetMapping("/new")
 	public ModelAndView newSucursal(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);
 		mAV.addObject("sucursal", new SucursalModel());
 		mAV.addObject("gerentes", gerenteServices.getAll());// para que vaya a buscar los gerentes que hay y los muestre
 		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
+		
 		return mAV;
 	}
 	
@@ -58,7 +76,7 @@ public class SucursalController {
 	}
 	
 	//public final static String LOCAL_ID="local/view";
-	@GetMapping("/{id}")
+	@GetMapping("/stock/{id}")
 	public ModelAndView sucursal(@PathVariable("id") int id){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_STOCK);
 		List<LoteModel> lstLotes = loteServices.getLotes(id);

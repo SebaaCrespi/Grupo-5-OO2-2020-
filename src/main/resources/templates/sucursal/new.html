@@ -13,7 +13,8 @@
 	<div class="container">
 		<form action="#" th:action="@{/sucursal/save}" th:object="${sucursal}"
 			method="post">
-
+  
+			<input type="hidden" th:field ="${sucursal.id}">
 			<label>Telefono</label> <input type="text" th:field="*{telefono}" />
 
 

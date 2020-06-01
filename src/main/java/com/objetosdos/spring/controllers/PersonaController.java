@@ -1,6 +1,5 @@
 package com.objetosdos.spring.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +17,6 @@ import com.objetosdos.spring.services.IPersonaService;
 @Controller
 @RequestMapping("/persona")
 public class PersonaController {
-	
-	
 
 	@Autowired
 	private IPersonaService personaService;
@@ -38,9 +35,6 @@ public class PersonaController {
 		mAV.addObject("persona", new PersonaModel());
 		return mAV;
 	}
-	
-	
-
 
 	@PostMapping("/create")
 	public RedirectView create(@ModelAttribute("persona") PersonaModel personModel) { //
