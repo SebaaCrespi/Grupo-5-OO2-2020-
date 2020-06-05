@@ -17,13 +17,14 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPedido;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne//(cascade = CascadeType.ALL)
 	private Producto producto;
 	
 	private int cantidad;
 	private boolean aceptado;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne//(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idvendedor")
 	private Vendedor vendedorAuxiliar;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -34,11 +35,13 @@ public class Pedido {
 		
 	}
 	
-	public Pedido(Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado) {
+	public Pedido(int idPedido,Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado, Venta venta) {
 		super();
+		this.idPedido = idPedido;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
+		this.venta = venta;
 	}
 	
 	public Producto getProducto() {
@@ -68,6 +71,22 @@ public class Pedido {
 
 	public void setAceptado(boolean aceptado) {
 		this.aceptado = aceptado;
+	}
+
+	public int getIdPedido() {
+		return idPedido;
+	}
+
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
+	}
+
+	public Venta getVenta() {
+		return venta;
+	}
+
+	public void setVenta(Venta venta) {
+		this.venta = venta;
 	}
 
 	@Override

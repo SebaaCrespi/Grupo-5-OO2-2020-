@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Vendedor extends Empleado{
@@ -15,8 +16,11 @@ public class Vendedor extends Empleado{
 	private float plus;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idsucursal", nullable=true) // En la tala vendedor se relaciona con idsucursal la sucursal
+	@JoinColumn(name="idsucursal", nullable=true) // En la tabla vendedor se relaciona con idsucursal la sucursal
 	private Sucursal sucursal;
+	
+	@OneToOne(mappedBy = "vendedorAuxiliar") //si tenes una tabla gerente
+	private Pedido pedido;
 
 public Vendedor(){
 	

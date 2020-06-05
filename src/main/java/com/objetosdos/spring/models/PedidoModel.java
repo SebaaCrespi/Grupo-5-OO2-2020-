@@ -17,12 +17,14 @@ public class PedidoModel {
 		
 	}
 	
-	public PedidoModel(Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado) {
+	public PedidoModel(int idPedido, Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado,Venta venta) {
 		super();
 		this.producto = producto;
 		this.vendedorAuxiliar=vendedorAuxiliar;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
+		this.venta = venta;
+		this.venta = venta;
 	}
 
 	public int getIdPedido() {

@@ -40,9 +40,9 @@ public class PedidoController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_INDEX);
 		
 		mAV.addObject("pedido", pedidoService.getAll());
-		mAV.addObject("venta",ventaService.getAll());
-		mAV.addObject("producto",productoService.getAll());
-		mAV.addObject("vendedor",vendedorService.getAll());
+		//mAV.addObject("venta",ventaService.getAll());
+		//mAV.addObject("producto",productoService.getAll());
+		mAV.addObject("vendedorAuxiliar",vendedorService.getAll()); // SI LO SACO NO ME TIRA ERROR EL INDEX
 		mAV.addObject("return", ViewRouteHelper.ROUTE);
 	    return mAV;
 	}
@@ -52,7 +52,7 @@ public class PedidoController {
 		mAV.addObject("pedido", new PedidoModel());
 		mAV.addObject("producto", productoService.getAll());
 		mAV.addObject("vendedor", vendedorService.getAll());
-		mAV.addObject("venta", ventaService.getAll());
+		//mAV.addObject("venta", ventaService.getAll());
 		mAV.addObject("return", ViewRouteHelper.PEDIDO_ROOT);
 		return mAV;
 	}   
@@ -76,7 +76,7 @@ public class PedidoController {
 }
 	
 	
-	@PostMapping("/save")
+	@PostMapping("/create")
 	public RedirectView savePedido(@ModelAttribute("pedido") PedidoModel pedidoModel){
 		pedidoService.insertOrUpdate(pedidoModel);
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
