@@ -15,7 +15,10 @@
             <input type="hidden" th:field="*{id}" />
             <label>Status</label>
             <input type="text" th:field="*{status}" />
-
+	<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     th:text="${mensaje}"
+     class="alert">
+     </div>
             
             <label>Descripcion</label>
             <input type="text" th:field="*{descripcion}" />

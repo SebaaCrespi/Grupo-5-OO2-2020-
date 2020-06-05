@@ -19,10 +19,28 @@
 			<input type="text" th:field="*{apellido}" />
 			<label>Fecha de Nacimiento</label>
 			<input type="date" th:field="*{fechaNacimiento}" />
-			<label>Dni</label>
-			<input type="text" th:field="*{dni}" />
-			<label>Mail</label>
-			<input type="text" th:field="*{mail}" />			
+			
+	<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     th:text="${mensaje}"
+     class="alert">
+</div>
+
+			<div class="form-group">
+                <label for="dni">Documento de identidad</label>
+                <input th:field="*{dni}" id="dni" placeholder="Escribe el documento" type="text"
+                       class="form-control" th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{dni}"></div>
+
+            </div>
+ 
+            
+             <div class="form-group">
+                <label for="mail">Mail</label>
+                <input autocomplete="off" th:field="*{mail}" id="existencia"
+                       placeholder="Ingrese el mail" type="text"
+                       class="form-control" th:classappend="${#fields.hasErrors('mail')} ? 'is-invalid' : ''">
+                <div class="invalid-feedback" th:errors="*{mail}"></div>
+            </div>		
 			<input type="submit" value="Crear" />
 		</form>
 	</div>

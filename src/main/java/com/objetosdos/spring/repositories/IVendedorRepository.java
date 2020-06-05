@@ -11,5 +11,6 @@ import com.objetosdos.spring.entities.Vendedor;
 public interface IVendedorRepository extends JpaRepository <Vendedor, Serializable> {
 	
 	public abstract Vendedor findByIdPersona(int id);
+	public abstract Vendedor findByDni(long dni);
 
 }
