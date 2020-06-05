@@ -9,5 +9,6 @@ import com.objetosdos.spring.entities.Gerente;
 public interface IGerenteRepository extends JpaRepository<Gerente,Integer>{
     
     public abstract Gerente findById(int id);
+    public abstract Gerente findByDni(long dni);
     
 }

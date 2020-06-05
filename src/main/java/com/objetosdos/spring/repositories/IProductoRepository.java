@@ -12,5 +12,6 @@ import com.objetosdos.spring.entities.Producto;
 public interface IProductoRepository extends JpaRepository<Producto, Serializable>{
 	
 	public abstract Producto findById(int id);
+	public abstract Producto findByDescripcion(String desc);
 
 }

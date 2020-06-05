@@ -62,7 +62,11 @@ public class ViewRouteHelper {
 	public final static String VENTA_INDEX = "venta/index";
     public final static String VENTA_NEW = "venta/new";
     public final static String VENTA_ID = "venta/view";
-
+    
+  //PEDIDO
+  	public final static String PEDIDO_INDEX = "pedido/index";
+    public final static String PEDIDO_NEW = "pedido/new";
+    public final static String PEDIDO_ID = "pedido/view";
 	/**** Redirects ****/
 	public final static String ROUTE = "/";
 	public final static String PERSONA_ROOT = "/persona";
@@ -74,5 +78,6 @@ public class ViewRouteHelper {
 	public final static String LOTE_ROOT = "/lote";
 	public final static String PRODUCTO_ROOT = "/producto";
 	public final static String VENTA_ROOT = "/venta";
+	public final static String PEDIDO_ROOT = "/pedido";
 	
 }

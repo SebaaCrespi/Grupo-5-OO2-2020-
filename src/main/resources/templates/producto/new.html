@@ -14,7 +14,11 @@
 		<form action="#" th:action="@{/producto/save}" th:object="${producto}"
 			method="post">
 
-			<label>Status</label> <input type="text" th:field="*{status}" />
+<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}"
+     th:text="${mensaje}"
+     class="alert">
+     </div>
+			
 			<label>Descripcion</label> <input type="text" th:field="*{descripcion}" />
 			<label>Precio Unitario</label> <input type="text" th:field="*{precioUnitario}" />
 			<label>Fecha alta</label> <input type="date" th:field="*{fechaAlta}" />

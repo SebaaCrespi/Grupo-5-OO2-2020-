@@ -61,7 +61,7 @@ public class LoteController {
 		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
 	} 
 	@PostMapping("/save")
-	public RedirectView saveVendedor(@ModelAttribute("lote") LoteModel loteModel){
+	public RedirectView saveLote(@ModelAttribute("lote") LoteModel loteModel){
 		loteService.insertOrUpdate(loteModel);
 		return new RedirectView(ViewRouteHelper.LOTE_ROOT);
 	

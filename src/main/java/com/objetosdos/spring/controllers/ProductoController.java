@@ -1,17 +1,23 @@
 package com.objetosdos.spring.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.objetosdos.spring.entities.Producto;
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.ProductoModel;
+import com.objetosdos.spring.repositories.IProductoRepository;
 import com.objetosdos.spring.services.ILoteService;
 import com.objetosdos.spring.services.IProductoService;
 
@@ -22,6 +28,8 @@ public class ProductoController {
 	
 	@Autowired
 	private IProductoService productoServices;
+	@Autowired
+	private IProductoRepository productoRepository;
 	
 	@Autowired
 	private ILoteService loteServices;
@@ -48,12 +56,24 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/save")
-	public RedirectView saveProducto(
-		@ModelAttribute("producto") ProductoModel productoModel) {
+	public String saveProducto(@Valid @ModelAttribute ("producto") ProductoModel productoModel ,BindingResult bindingResult, RedirectAttributes redirectAttrs) {
 		//@ModelAttribute("direccion") DireccionModel direccionModel){
 		//sucursalModel.setUbicacion(direccionServices.insertOrUpdate(direccionModel));
+		
+		Producto pro =productoRepository.findByDescripcion(productoModel.getDescripcion());
+		if (pro!=null) {
+			redirectAttrs
+            .addFlashAttribute("mensaje", "El modelo ya existe")
+            .addFlashAttribute("clase", "warning");
+   System.out.println("ENTRO AL METODO IF DE CONTROLLER");
+				return "redirect:/producto/new";
+			
+		}
+		
+		
 		productoServices.insertOrUpdate(productoModel);
-		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
+		
+		return "redirect:/producto";
 	}
 	
 	//public final static String LOCAL_ID="local/view";

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.objetosdos.spring.converters.LoteConverter;
 import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.models.LoteModel;
+import com.objetosdos.spring.models.ProductoModel;
 import com.objetosdos.spring.models.SucursalModel;
 import com.objetosdos.spring.repositories.ILoteRepository;
 import com.objetosdos.spring.services.ILoteService;
@@ -27,6 +28,8 @@ public class LoteService implements ILoteService{
 
 	@Autowired
 	private ISucursalService sucursalServices;
+	@Autowired
+	private ProductoService productoservices;
 
 	@Override
 	public List<Lote> getAll() {
@@ -36,8 +39,17 @@ public class LoteService implements ILoteService{
 
 	@Override
 	public LoteModel insertOrUpdate(LoteModel loteModel) {
-		Lote lote = loteRepository.save(loteConverter.modelToEntity(loteModel));
-        return loteConverter.entityToModel(lote);
+	
+	Lote lote = loteRepository.save(loteConverter.modelToEntity(loteModel));
+	LoteModel l =loteConverter.entityToModel(lote);
+	
+	ProductoModel p = productoservices.findByIdProducto(l.getProducto().getId()); //traigo el id producto que corresponde a ese loteModel
+	if (l.getCantidadActual()>0)
+	{
+		p.setStatus(true);
+		productoservices.insertOrUpdate(p); //guardo ese productoModel
+	}
+	return l;
 	}
 
 	@Override
