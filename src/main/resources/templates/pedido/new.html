@@ -8,16 +8,27 @@
 </head>
 <body>
 	<div class="container">
-		<form action="#" th:action="@{/persona/create}" th:object="${persona}"
+		<form action="#" th:action="@{/pedido/create}" th:object="${pedido}"
 			method="post">
-			<label>Nombre</label>
-			<input type="text" th:field="*{nombre}" />
-			<label>Apellido</label>
-			<input type="text" th:field="*{apellido}" />
-			<label>Fecha de Nacimiento</label>
-			<input type="date" th:field="*{fechaNacimiento}" />
-			<label>Dni</label>
-			<input type="text" th:field="*{dni}" />
+			
+			<label>PRODUCTO</label>
+			<select th:field="*{producto.id}">
+				<option th:each="p : ${producto}" th:value="${p.id}"
+					th:text="${p.descripcion}"></option>
+			</select>
+			
+			
+			
+			<label>CANTIDAD</label>
+			<input type="text" th:field="*{cantidad}" />
+			
+			<label>VENDEDOR</label>
+			<select th:field="*{vendedorAuxiliar.idPersona}">
+				<option th:each="v : ${vendedor}" th:value="${v.idPersona}"
+					th:text="${v.idPersona}"></option>
+			</select> 
+			<label>PEDIDO ACEPTADO</label>
+			<input type="text" th:field="*{aceptado}" />
 					
 			<input type="submit" value="Crear" />
 		</form>

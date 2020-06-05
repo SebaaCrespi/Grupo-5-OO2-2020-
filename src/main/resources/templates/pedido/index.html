@@ -11,25 +11,40 @@
     <div class="container">
         <div class="table">
             <div class="title">
-                <h2>Personas</h2>
+                <h2>PEDIDOS</h2>
             </div>
             <table>
                 <tr class="strong">
                     <td>ID</td>
-                    <td>NOMBRE</td>
-                    <td>APELLIDO</td>
+                    <td>PRODUCTOS</td>
+                    <td>CANTIDAD</td>
+                    <td>VENDEDOR</td>
+                    <td>ACEPTADO</td>
                     <td>VER</td>
                     <td>ELIMINAR</td>
                 </tr>
-                <tr th:each="p : ${persons}">
-                    <td th:text="${p.idPersona}"></td>
-                    <td th:text="${p.nombre}"></td>
-                    <td th:text="${p.apellido}"></td>
+                <tr th:each="p : ${pedido}">
+                    <td th:text="${p.idPedido}"></td>
+                    
+                    <td><th:block th:each="producto,iter : ${p.producto}">
+						<label th:text="${producto.descripcion}"></label>
+						<th:block th:if= "${!iter.last}"><th:block>
+				    </td>
+				    
+                    <td th:text="${p.cantidad}"></td>
+                    
+                    <td><th:block th:each="vendedorAuxiliar,iter : ${p.vendedorAuxiliar}"> <!-- dento de llaves va como esta en entity -->
+						<label th:text="${vendedorAuxiliar.apellido}"></label>    <!--  ACA ES EL PARAM QUE SE LE PASA DE INDEX -->
+						<th:block th:if= "${!iter.last}"><th:block>
+				    </td>
+				    
+                    <td th:text="${p.aceptado}"></td>
+                    
                     <td>
-                        <a th:href="@{/persona/{id}(id=${p.idPersona})}"><i class="fas fa-eye"></i></a>
+                        <a th:href="@{/pedido{id}(id=${p.idPedido})}"><i class="fas fa-eye"></i></a>
                     </td>
                     <td>
- <form action="#" th:action="@{/persona/delete/{id}(id=${p.idPersona})}" method="post" > 
+ 				<form action="#" th:action="@{/pedido/remove/{id}(id=${p.idPedido})}" method="post" > 
 							
                             <input type="submit" value="ELIMINAR">
                             
@@ -38,7 +53,7 @@
                    </td>
                 </tr>
             </table>
-            <div class="add-btn"><a th:href="@{/persona/new}" id="add-btn">Agregar</a></div>
+            <div class="add-btn"><a th:href="@{/pedido/new}" id="add-btn">Agregar</a></div>
         </div>
     </div>
 <script src="../../static/js/jquery-3.4.1.min.js"></script>
