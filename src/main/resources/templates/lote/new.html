@@ -20,7 +20,7 @@
 			<label>FECHA DE INGRESO</label> <input type="date" th:field="*{fechaIngreso}" />
 
 			<label>SUCURSAL</label>
-			<select th:field="${lote.sucursal}">
+			<select th:field="*{sucursal.id}">
                 <option th:each="s : ${sucursal}" th:value="${s.id}">
                     <th:block th:each="ubicacion,iter : ${s.ubicacion}">
 					<label th:text="${ubicacion.ciudad}"></label>

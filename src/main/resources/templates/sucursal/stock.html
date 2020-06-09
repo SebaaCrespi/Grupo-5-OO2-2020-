@@ -15,14 +15,14 @@
                 <input id="idSucursal" style="display:none;" th:value="${idSucursal}">
             </header>
             <div class="filter">
-                <select id="marca">
+                <select placeholder="Marca" id="marca">
                     <option th:each="marca : ${marcas}" th:value="${marca}">
                         <p th:text="${marca}"></p>
                     </option>
                 </select>
-                <select id="descripcion">
+                <select placeholder="Descripcion" id="descripcion">
                 </select>
-                <select id="talle">
+                <select placeholder="Talle" id="talle">
                 </select>
                 <button id="buscar">Buscar</button>
             </div>

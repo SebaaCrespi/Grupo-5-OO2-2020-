@@ -28,5 +28,4 @@ public interface ILoteService {
     	
     public LoteModel getBusquedaProductoEnSucursal(int idSucursalActual, String marca, String descripcion, String talle);
 
-    public LoteModel getLoteDeSucursalMasCercana(List<LoteModel> lstLotes, SucursalModel sucursal);
 }

@@ -1,6 +1,7 @@
 package com.objetosdos.spring.services.implementation;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.objetosdos.spring.converters.SucursalConverter;
 import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Sucursal;
-
+import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.SucursalModel;
 import com.objetosdos.spring.repositories.ISucursalRepository;
 import com.objetosdos.spring.services.ILoteService;
@@ -69,4 +70,49 @@ public class SucursalService implements ISucursalService{
 
 		return radioTierra * va2;
 		}
+	@Override
+	public List<Double> traerListaDeDistancias(List<SucursalModel> sucursalOrdenada, SucursalModel sucursalActual){
+		List<Double> distancias = new ArrayList<Double>();
+		for(SucursalModel s : sucursalOrdenada){
+			distancias.add(calcularDistancia(
+				sucursalActual.getUbicacion().getLatitud(),
+				sucursalActual.getUbicacion().getLongitud(),
+				s.getUbicacion().getLatitud(),
+				s.getUbicacion().getLongitud()
+				));
+		}
+		return distancias;
+	}	
+	@Override
+	public List<SucursalModel> traerSucursalesMasCercanas(List<LoteModel> lstLotes, SucursalModel sucursalActual){
+		List<Double> distancias = new ArrayList<Double>();
+		List<SucursalModel> sucursales = new ArrayList<SucursalModel>();
+		List<SucursalModel> sucursalesOrdenadas = new ArrayList<SucursalModel>();
+		for(LoteModel l : lstLotes){
+			sucursales.add(sucursalConverter.entityToModel(l.getSucursal()));
+			distancias.add(calcularDistancia(
+				sucursalActual.getUbicacion().getLatitud(),
+				sucursalActual.getUbicacion().getLongitud(),
+				l.getSucursal().getUbicacion().getLatitud(),
+				l.getSucursal().getUbicacion().getLongitud()
+				));
+		}
+		Collections.sort(distancias);
+		for(int i = 0 ; i < 3 ; i++){
+			if(i < 3){
+				for(SucursalModel s : sucursales){
+					
+					Double distanciaActual = calcularDistancia(
+						sucursalActual.getUbicacion().getLatitud(),
+						sucursalActual.getUbicacion().getLongitud(),
+						s.getUbicacion().getLatitud(),
+						s.getUbicacion().getLongitud());	
+					if(distancias.get(i).equals(distanciaActual)){
+						sucursalesOrdenadas.add(s);
+					}
+				}
+			}
+		}
+		return sucursalesOrdenadas;
+	}	
 }

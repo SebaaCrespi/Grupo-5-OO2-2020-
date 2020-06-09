@@ -3,7 +3,12 @@
 </div>
 <div class="other">
     <h3>No se encontró el producto en el stock</h3>
-    <p>Producto en la sucursal de <span th:text="${ubicacion.ciudad}"></span></p>
-    <p>Distancia: <span th:text="${distancia}"></span> metros</p>
-    <a href="#">Generar pedido</a>
+    <p>Producto en las sucursales:</p>
+    <div th:each="s,i : ${sucursales}">
+        <th:block th:each="ubicacion,iter : ${s.ubicacion}">
+        <p style="display: inline-block" th:text="${ubicacion.ciudad}"></p><p style="display: inline-block; margin-left:5px;"> (<span th:text="${distancias[i.index]}"></span> km)</p>
+        <th:block th:if= "${!iter.last}"><th:block>
+        <a href="#">Solicitar stock</a>
+    </div>
+    
 </div>

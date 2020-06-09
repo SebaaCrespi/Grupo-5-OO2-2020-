@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.objetosdos.spring.helper.ViewRouteHelper;
@@ -113,16 +114,16 @@ public class SucursalController {
 		LoteModel lote = loteServices.getBusquedaProductoEnSucursal(id, marca, desc, talle);
 		ModelAndView mAV = new ModelAndView();
 		SucursalModel sucursalActual =  sucursalServices.findById(id);
+		List<SucursalModel> sucursalesCercanas = null;
 		if(lote == null){
-			lote = loteServices.getLoteDeSucursalMasCercana(loteServices.getBusquedaProducto(marca, desc, talle),sucursalActual);
-			if(lote == null){
-				mAV.setViewName(ViewRouteHelper.LOCAL_WITHOUT_STOCK);
+			sucursalesCercanas = sucursalServices.traerSucursalesMasCercanas(loteServices.getBusquedaProducto(marca, desc, talle),sucursalActual);
+			if(sucursalesCercanas != null){
+				mAV.setViewName(ViewRouteHelper.LOCAL_LOTE_IN_OTHER_SUCURSAL);
+				mAV.addObject("sucursales", sucursalesCercanas);
+				mAV.addObject("distancias", sucursalServices.traerListaDeDistancias(sucursalesCercanas, sucursalActual));
 			}
 			else{
-				mAV.setViewName(ViewRouteHelper.LOCAL_LOTE_IN_OTHER_SUCURSAL);
-				mAV.addObject("idSucursal", id);
-				mAV.addObject("ubicacion", sucursalServices.findById(lote.getSucursal().getId()).getUbicacion());
-				mAV.addObject("distancia", sucursalServices.calcularDistancia(sucursalActual.getUbicacion().getLatitud(),sucursalActual.getUbicacion().getLongitud(),lote.getSucursal().getUbicacion().getLatitud(),lote.getSucursal().getUbicacion().getLongitud()));
+				mAV.setViewName(ViewRouteHelper.LOCAL_WITHOUT_STOCK);
 			}
 		}
 		else{
