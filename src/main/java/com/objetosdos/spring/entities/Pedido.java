@@ -23,10 +23,16 @@ public class Pedido {
 	private int cantidad;
 	private boolean aceptado;
 	
-	@OneToOne//(cascade = CascadeType.ALL)
+	@OneToOne //(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idvendedor")
 	private Vendedor vendedorAuxiliar;
 	
+	
+	/*
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idvendedor", nullable=true) // En la tabla venta se relaciona con idventa la venta
+	private Vendedor vendedorAuxiliar;
+	*/
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idventa", nullable=true) // En la tabla venta se relaciona con idventa la venta
 	private Venta venta;
@@ -41,6 +47,7 @@ public class Pedido {
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
+		this.vendedorAuxiliar=vendedorAuxiliar;
 		this.venta = venta;
 	}
 	

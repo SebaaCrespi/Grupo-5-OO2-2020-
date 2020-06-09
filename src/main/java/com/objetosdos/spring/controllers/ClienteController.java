@@ -89,14 +89,14 @@ public class ClienteController {
 		return mAV;
 	}
 	
-/*
+
 	@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("cliente") ClienteModel clienteModel) {
 		clienteService.insertOrUpdate(clienteModel);
 		return new RedirectView(ViewRouteHelper.CLIENTE_ROOT);
 	}
 	
-	*/
+	
 	
 	@PostMapping("/remove/{id}")
 	public RedirectView delete(@PathVariable("id") int id) {

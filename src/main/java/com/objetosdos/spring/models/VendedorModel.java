@@ -2,6 +2,7 @@ package com.objetosdos.spring.models;
 
 import java.time.LocalDate;
 
+import com.objetosdos.spring.entities.Pedido;
 import com.objetosdos.spring.entities.Sucursal;
 
 public class VendedorModel extends EmpleadoModel{
@@ -9,16 +10,27 @@ public class VendedorModel extends EmpleadoModel{
 	private float plus;
 	private Sucursal sucursal;
 	
+	private Pedido pedido;
+	
 	public VendedorModel() {
 		super ();
 	}
 	
 	public VendedorModel(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico,Sucursal sucursal) {
+			float sueldoBasico,Sucursal sucursal, Pedido pedido) {
 		super(idPersona,nombre, apellido,fechaNacimiento,dni,horasPorJornada,sueldoBasico);
 		this.sucursal = sucursal;
+		this.pedido=pedido;
 	}
 
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
 
 	public float getPlus() {
 		return plus;
