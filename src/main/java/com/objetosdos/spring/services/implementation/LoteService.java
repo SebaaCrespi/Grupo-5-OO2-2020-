@@ -99,29 +99,7 @@ public class LoteService implements ILoteService{
 		}
         return lstLoteModel;
 	}
-	@Override
-	public LoteModel getLoteDeSucursalMasCercana(List<LoteModel> lstLotes, SucursalModel sucursal){
-		LoteModel loteMasCercano = new LoteModel();
-		double distanciaMinima = sucursalServices.calcularDistancia(
-			sucursal.getUbicacion().getLatitud(),
-			sucursal.getUbicacion().getLongitud(),
-			lstLotes.get(0).getSucursal().getUbicacion().getLatitud(),
-			lstLotes.get(0).getSucursal().getUbicacion().getLongitud());
-		double distanciaCalculada = 0;
-		for(LoteModel lote : lstLotes){
-			distanciaCalculada = sucursalServices.calcularDistancia(
-				sucursal.getUbicacion().getLatitud(),
-				sucursal.getUbicacion().getLongitud(),
-				lote.getSucursal().getUbicacion().getLatitud(),
-				lote.getSucursal().getUbicacion().getLongitud()
-			);
-			if(distanciaMinima >= distanciaCalculada){
-				distanciaMinima = distanciaCalculada;
-				loteMasCercano = lote;
-			}
-		}
-		return loteMasCercano;
-	}
+	
 	@Override
 	public LoteModel getBusquedaProductoEnSucursal(int idSucursalActual,String marca, String descripcion, String talle){
 		LoteModel loteEncontrado = null;
