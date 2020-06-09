@@ -25,4 +25,7 @@ public interface ILoteRepository extends JpaRepository<Lote, Serializable>{
 	
 	@Query("FROM Lote l JOIN l.producto p where p.marca = (:marca)"+" and p.descripcion = (:descripcion)" + " and l.talle = (:talle)")
     public abstract List<Lote> getBusquedaProducto(String marca, String descripcion, String talle);
+	
+	@Query("FROM Lote l JOIN l.producto p where p.marca = (:marca)"+" and p.descripcion = (:descripcion)" + " and l.talle = (:talle)"+"and cantidad= (:cantidadActual)")
+    public abstract List<Lote> getBusquedaProductoyCantidad(String marca, String descripcion, String talle);
 }

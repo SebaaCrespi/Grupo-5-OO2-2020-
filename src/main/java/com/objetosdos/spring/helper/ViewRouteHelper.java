@@ -66,7 +66,7 @@ public class ViewRouteHelper {
   //PEDIDO
   	public final static String PEDIDO_INDEX = "pedido/index";
     public final static String PEDIDO_NEW = "pedido/new";
-    public final static String PEDIDO_ID = "pedido/view";
+    public final static String PEDIDO_ID = "pedido/update";
 	/**** Redirects ****/
 	public final static String ROUTE = "/";
 	public final static String PERSONA_ROOT = "/persona";

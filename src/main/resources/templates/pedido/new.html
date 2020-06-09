@@ -25,7 +25,8 @@
 			<label>VENDEDOR</label>
 			<select th:field="*{vendedorAuxiliar.idPersona}">
 				<option th:each="v : ${vendedor}" th:value="${v.idPersona}"
-					th:text="${v.idPersona}"></option>
+					th:text="${v.nombre+v.apellido}">
+					</option>
 			</select> 
 			<label>PEDIDO ACEPTADO</label>
 			<input type="text" th:field="*{aceptado}" />

@@ -11,7 +11,7 @@
 <body>
     <div class="return-btn"><a href="#" th:href="@{{link}(link = ${return})}"><i class="fas fa-arrow-left"></i></a></div>
     <div class="container">
-        <form action="#" th:action="@{/vendedor/save}" th:object=${vendedor} method="post">
+        <form action="#" th:action="@{/vendedor/update}" th:object=${vendedor} method="post">
             <input type="text" th:field="*{idPersona}">
             <label>Nombre</label>
             <input type="text" th:field="*{nombre}">

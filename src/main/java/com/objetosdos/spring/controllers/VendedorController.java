@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.objetosdos.spring.entities.Vendedor;
 import com.objetosdos.spring.helper.ViewRouteHelper;
+import com.objetosdos.spring.models.ClienteModel;
 import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.repositories.IVendedorRepository;
 import com.objetosdos.spring.services.ISucursalService;
@@ -88,6 +89,12 @@ public class VendedorController {
     
 	public RedirectView remove(@PathVariable("id") int id) {
 		vendedorService.remove(id);
+		return new RedirectView(ViewRouteHelper.VENDEDOR_ROOT);
+	}
+    
+    @PostMapping("/update")
+	public RedirectView update(@ModelAttribute("vendedor") VendedorModel vendedorModel) {
+		vendedorService.insertOrUpdate(vendedorModel);
 		return new RedirectView(ViewRouteHelper.VENDEDOR_ROOT);
 	}
 	

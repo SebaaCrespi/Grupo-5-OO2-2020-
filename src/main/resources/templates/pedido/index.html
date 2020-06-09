@@ -41,7 +41,7 @@
                     <td th:text="${p.aceptado}"></td>
                     
                     <td>
-                        <a th:href="@{/pedido{id}(id=${p.idPedido})}"><i class="fas fa-eye"></i></a>
+                        <a th:href="@{/pedido/{id}(id=${p.idPedido})}"><i class="fas fa-eye"></i></a>
                     </td>
                     <td>
  				<form action="#" th:action="@{/pedido/remove/{id}(id=${p.idPedido})}" method="post" > 
