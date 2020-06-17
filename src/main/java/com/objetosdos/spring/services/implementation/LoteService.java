@@ -114,4 +114,22 @@ public class LoteService implements ILoteService{
 		}
 		return loteEncontrado;
 	}
+	
+	
+	
+	@Override
+	public List<ProductoModel> getAllProductoSuc(int id){
+		//SucursalModel suc = sucursalServices.findById(id);
+		
+		List<ProductoModel> pro = new ArrayList<ProductoModel>();
+		for(Lote lote : getAll()){
+            if(lote.getSucursal().getId() == id){
+            	pro.add(productoservices.findByIdProducto(lote.getProducto().getId()));
+            }
+              
+            }
+		return pro;
+		
+		
+	}
 }

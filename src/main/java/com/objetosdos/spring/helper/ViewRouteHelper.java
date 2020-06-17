@@ -45,6 +45,7 @@ public class ViewRouteHelper {
 	public final static String LOCAL_WITHOUT_STOCK="sucursal/resultFilterWithOutStock";
 	public final static String LOCAL_LOTE_IN_OTHER_SUCURSAL ="sucursal/resultFilterOtherSucursal";
 	public final static String LOCAL_VIEW = "sucursal/view";
+	public final static String LOCAL_PEDIDO = "sucursal/pedido";
 	
 	//VENDEDOR
 	public final static String LOTE_INDEX="lote/index";

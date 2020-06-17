@@ -16,7 +16,8 @@
             <table>
                 <tr class="strong">
                     <td>ID</td>
-                    <td>PRODUCTOS</td>
+                    <td>PRODUCTO</td>
+                    <td>TALLE</td>
                     <td>CANTIDAD</td>
                     <td>VENDEDOR</td>
                     <td>ACEPTADO</td>
@@ -26,15 +27,20 @@
                 <tr th:each="p : ${pedido}">
                     <td th:text="${p.idPedido}"></td>
                     
-                    <td><th:block th:each="producto,iter : ${p.producto}">
-						<label th:text="${producto.descripcion}"></label>
+                    <td><th:block th:each="lote,iter : ${p.producto}">
+						<label th:text="${lote.producto.descripcion}"></label>
 						<th:block th:if= "${!iter.last}"><th:block>
 				    </td>
+				    <td><th:block th:each="lote,iter : ${p.producto}">
+						<label th:text="${lote.talle}"></label>
+						<th:block th:if= "${!iter.last}"><th:block>
+				    </td>
+				    
 				    
                     <td th:text="${p.cantidad}"></td>
                     
                     <td><th:block th:each="vendedorAuxiliar,iter : ${p.vendedorAuxiliar}"> <!-- dento de llaves va como esta en entity -->
-						<label th:text="${vendedorAuxiliar.apellido}"></label>    <!--  ACA ES EL PARAM QUE SE LE PASA DE INDEX -->
+						<label th:text="${vendedorAuxiliar.apellido+ ' ' +vendedorAuxiliar.nombre}"></label>    <!--  ACA ES EL PARAM QUE SE LE PASA DE INDEX -->
 						<th:block th:if= "${!iter.last}"><th:block>
 				    </td>
 				    

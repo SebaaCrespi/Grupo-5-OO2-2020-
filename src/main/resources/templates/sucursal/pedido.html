@@ -8,32 +8,32 @@
 </head>
 <body>
 	<div class="container">
-		<form action="#" th:action="@{/pedido/create}" th:object="${pedido}"
+		<form action="#" th:action="@{/sucursal/pedido/create}" th:object="${pedido}"
 			method="post">
+			<input type="hidden" th:field="${sucursal.id}" />
 			
-			<label>PRODUCTO</label>
-			<select th:field="*{producto.id}">
-				<option th:each="p : ${producto}" th:value="${p.id}"
-					th:text="${p.descripcion}"></option>
+			<label>PRODUCTO(ID-MODELO-TALLE)</label>
+			<select th:field="*{producto.idLote}">
+				<option th:each="l: ${producto}" th:value="${l.idLote}"
+					th:text="${l.idLote+' ' +l.producto.descripcion+' ' +l.talle}"></option>
 			</select>
 			
-		  
-            
-            
-         
+
 			
 			<label>CANTIDAD</label>
-			<input type="text" th:field="*{cantidad}" />
+			<input type="number" th:field="*{cantidad}" />
+			
+			
 			
 			<label>VENDEDOR</label>
 			<select th:field="*{vendedorAuxiliar.idPersona}">
 				<option th:each="v : ${vendedor}" th:value="${v.idPersona}"
-					th:text="${v.nombre+''+v.apellido}">
+					th:text="${v.nombre+' '+v.apellido}">
 					</option>
 			</select> 
 			
 					
-			<input type="submit" value="Crear" />
+			<input type="submit" value="AGREGAR" />
 		</form>
 	</div>
 </body>

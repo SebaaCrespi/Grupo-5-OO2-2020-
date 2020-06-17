@@ -8,8 +8,10 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Gerente extends Empleado{
+	
 	@OneToOne(mappedBy = "gerente") //si tenes una tabla gerente
 	private Sucursal sucursal;
+	
 	public Gerente(){
 	}
 	public Gerente(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,

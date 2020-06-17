@@ -2,13 +2,14 @@ package com.objetosdos.spring.entities;
 
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Vendedor extends Empleado{
@@ -20,25 +21,26 @@ public class Vendedor extends Empleado{
 	@JoinColumn(name="idsucursal", nullable=true) // En la tabla vendedor se relaciona con idsucursal la sucursal
 	private Sucursal sucursal;
 	
-	@OneToOne(fetch=FetchType.LAZY,mappedBy = "vendedorAuxiliar") 
-	private Pedido pedido;
+	@OneToMany(fetch=FetchType.LAZY,mappedBy = "vendedorAuxiliar") 
+	private Set<Pedido> lstPedido= new HashSet<Pedido>(); 
 
 public Vendedor(){
 	
 }
 	public Vendedor(int idPersona,String nombre, String apellido, LocalDate fechaNacimiento, long dni, int horasPorJornada,
-			float sueldoBasico,Sucursal sucursal,Pedido pedido) {
+			float sueldoBasico,Sucursal sucursal) {
 		super(idPersona,nombre,  apellido, fechaNacimiento, dni, horasPorJornada, sueldoBasico);
 		this.sucursal=sucursal;
-		this.pedido=pedido;
+		
 	}
 
 
-	public Pedido getPedido() {
-		return pedido;
+	
+	public Set<Pedido> getLstPedido() {
+		return lstPedido;
 	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
+	public void setLstPedido(Set<Pedido> lstPedido) {
+		this.lstPedido = lstPedido;
 	}
 	public float getPlus() {
 		return plus;

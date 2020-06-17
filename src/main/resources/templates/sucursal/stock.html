@@ -46,7 +46,8 @@
                         <td th:text="${producto.marca}"></td>
                         <td th:text="${l.talle}"></td>
                         <td th:text="${l.cantidadActual}"></td>
-                        <td>seleccionar cant y vendedor (boton generar pedido)</td>
+                        
+                        <td><a th:href="@{/sucursal/pedido/new/{id}(id = ${idSucursal})}">pedido</a></td>
                     </tr>
                 </table>
             </div>

@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.objetosdos.spring.entities.Lote;
+import com.objetosdos.spring.entities.Producto;
 
 @Repository
 public interface ILoteRepository extends JpaRepository<Lote, Serializable>{
@@ -28,4 +29,9 @@ public interface ILoteRepository extends JpaRepository<Lote, Serializable>{
 	
 	@Query("FROM Lote l JOIN l.producto p where p.marca = (:marca)"+" and p.descripcion = (:descripcion)" + " and l.talle = (:talle)"+"and cantidad= (:cantidadActual)")
     public abstract List<Lote> getBusquedaProductoyCantidad(String marca, String descripcion, String talle);
+	
+	@Query("select p.descripcion FROM Lote l JOIN l.producto p where l.sucursal = (:id)")
+	public abstract List<Producto> getAllProductoSuc(int id);
 }
+
+

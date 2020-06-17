@@ -1,5 +1,6 @@
 package com.objetosdos.spring.models;
 
+import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Producto;
 import com.objetosdos.spring.entities.Vendedor;
 import com.objetosdos.spring.entities.Venta;
@@ -7,7 +8,7 @@ import com.objetosdos.spring.entities.Venta;
 public class PedidoModel {
 
 	private int idPedido;
-	private Producto producto;
+	private Lote producto;
 	private int cantidad;
 	private boolean aceptado;
 	private Vendedor vendedorAuxiliar;
@@ -17,7 +18,7 @@ public class PedidoModel {
 		
 	}
 	
-	public PedidoModel(int idPedido, Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado,Venta venta) {
+	public PedidoModel(int idPedido, Lote producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado,Venta venta) {
 		super();
 		this.producto = producto;
 		this.vendedorAuxiliar=vendedorAuxiliar;
@@ -35,11 +36,11 @@ public class PedidoModel {
 		this.idPedido = idPedido;
 	}
 
-	public Producto getProducto() {
+	public Lote getProducto() {
 		return producto;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(Lote producto) {
 		this.producto = producto;
 	}
 

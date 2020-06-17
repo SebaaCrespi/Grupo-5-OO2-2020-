@@ -18,8 +18,8 @@ public class VendedorConverter {
 	        		vendedormodel.getDni(),
 	        		vendedormodel.getHorasPorJornada(),
 	        		vendedormodel.getSueldoBasico(),
-	        		vendedormodel.getSucursal(),
-	        		vendedormodel.getPedido()
+	        		vendedormodel.getSucursal()
+	        		
 	        	
 	        );
 		}
@@ -32,8 +32,8 @@ public class VendedorConverter {
 					vendedor.getDni(),
 					vendedor.getHorasPorJornada(),
 					vendedor.getSueldoBasico(),
-					vendedor.getSucursal(),
-					vendedor.getPedido()
+					vendedor.getSucursal()
+					
 			
 					
 	        );

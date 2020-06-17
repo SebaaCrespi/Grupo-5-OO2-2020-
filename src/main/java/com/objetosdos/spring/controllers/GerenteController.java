@@ -3,6 +3,7 @@ package com.objetosdos.spring.controllers;
 import com.objetosdos.spring.entities.Gerente;
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.GerenteModel;
+import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.repositories.IGerenteRepository;
 import com.objetosdos.spring.services.IGerenteService;
 
@@ -71,5 +72,11 @@ public class GerenteController {
         return new RedirectView(ViewRouteHelper.GERENTE_ROOT);
     }
    
+    
+    @PostMapping("/update")
+  	public RedirectView update(@ModelAttribute("vendedor") GerenteModel gerenteModel) {
+  		gerenteService.insertOrUpdate(gerenteModel);
+  		return new RedirectView(ViewRouteHelper.GERENTE_ROOT);
+  	}
 
 }

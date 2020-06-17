@@ -2,6 +2,7 @@ package com.objetosdos.spring.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -26,6 +29,14 @@ public class Lote {
 	@JoinColumn(name="idproducto", nullable=true) // En la tala vendedor se relaciona con idsucursal la sucursal
 		private Producto producto;
 		private String talle;
+		@Override
+		public String toString() {
+			return "Lote [idLote=" + idLote + ", producto=" + producto + ", talle=" + talle + ", cantidadActual="
+					+ cantidadActual + ", cantidadInicial=" + cantidadInicial + ", fechaIngreso=" + fechaIngreso
+					+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", sucursal=" + sucursal + "]";
+		}
+
+
 		private int cantidadActual;
 		private int cantidadInicial;
 		private LocalDate fechaIngreso;
@@ -40,11 +51,14 @@ public class Lote {
 		@JoinColumn(name="idsucursal", nullable=true) // En la tala vendedor se relaciona con idsucursal la sucursal
 		private Sucursal sucursal;
 		
+		@OneToMany(mappedBy = "producto") // como esta en la entidad pedido lote--producto.
+		private List<Pedido> pedido; //agregado.
+		
 	public Lote () {
 		
 		
 	}
-			public Lote(int idLote,Producto producto, String talle,int cantidadActual, int cantidadInicial, LocalDate fechaIngreso, Sucursal sucursal) {
+			public Lote(int idLote,Producto producto, String talle,int cantidadActual, int cantidadInicial, LocalDate fechaIngreso, Sucursal sucursal,List<Pedido> pedido) {
 			super();
 			this.idLote=idLote;
 			this.producto = producto;
@@ -53,9 +67,16 @@ public class Lote {
 			this.cantidadInicial = cantidadInicial;
 			this.fechaIngreso = fechaIngreso;
 			this.sucursal=sucursal;
+			this.pedido=pedido;
 		}
 
 
+		public List<Pedido> getPedido() {
+				return pedido;
+			}
+			public void setPedido(List<Pedido> pedido) {
+				this.pedido = pedido;
+			}
 		public int getIdLote() {
 				return idLote;
 			}

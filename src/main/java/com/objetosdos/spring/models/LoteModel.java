@@ -1,9 +1,11 @@
 package com.objetosdos.spring.models;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.objetosdos.spring.entities.Pedido;
 import com.objetosdos.spring.entities.Producto;
 import com.objetosdos.spring.entities.Sucursal;
 
@@ -18,12 +20,13 @@ public class LoteModel {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaIngreso;
 	private Sucursal sucursal;
+	private List<Pedido> pedido;
 	
 	public LoteModel() {
 		
 	}
 	public LoteModel(int idLote,Producto producto, String talle, int cantidadActual, int cantidadInicial, LocalDate fechaIngreso,
-			Sucursal sucursal) {
+			Sucursal sucursal, List<Pedido> pedido) {
 		super();
 		this.idLote=idLote;
 		this.producto = producto;
@@ -32,6 +35,7 @@ public class LoteModel {
 		this.cantidadInicial = cantidadInicial;
 		this.fechaIngreso = fechaIngreso;
 		this.sucursal = sucursal;
+		this.pedido=pedido;
 	}
 	@Override
 	public String toString() {
@@ -39,6 +43,12 @@ public class LoteModel {
 	}
 	
 	
+	public List<Pedido> getPedido() {
+		return pedido;
+	}
+	public void setPedido(List<Pedido> pedido) {
+		this.pedido = pedido;
+	}
 	public int getIdLote() {
 		return idLote;
 	}
