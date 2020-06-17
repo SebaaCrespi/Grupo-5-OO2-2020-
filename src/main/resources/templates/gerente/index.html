@@ -20,6 +20,7 @@
                     <td>ID</td>
                     <td>NOMBRE</td>
                     <td>APELLIDO</td>
+                    <td>DNI</td>
                     <td>VER</td>
                     <td>ELIMINAR</td>
                 </tr>
@@ -27,6 +28,7 @@
                     <td th:text="${g.idPersona}"></td>
                     <td th:text="${g.nombre}"></td>
                     <td th:text="${g.apellido}"></td>
+                    <td th:text="${g.dni}"></td>
                     <td>
                         <a th:href="@{/gerente/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></i></a>
                     </td>

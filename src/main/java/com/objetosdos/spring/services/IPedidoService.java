@@ -11,7 +11,9 @@ public interface IPedidoService {
 	
 	  public List<Pedido> getAll();
 	    
-	    public PedidoModel insertOrUpdate(PedidoModel pedidoModel);
+	    public boolean insertOrUpdate(PedidoModel pedidoModel);
+	    
+	    public boolean stockDisponible(PedidoModel pedidoModel);
 
 	    public PedidoModel findById(int id);
 	    

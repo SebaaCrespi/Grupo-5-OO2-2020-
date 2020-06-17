@@ -3,7 +3,9 @@ package com.objetosdos.spring.services;
 import java.util.List;
 
 import com.objetosdos.spring.entities.Lote;
+import com.objetosdos.spring.entities.Producto;
 import com.objetosdos.spring.models.LoteModel;
+import com.objetosdos.spring.models.ProductoModel;
 import com.objetosdos.spring.models.SucursalModel;
 
 public interface ILoteService {
@@ -28,4 +30,5 @@ public interface ILoteService {
     	
     public LoteModel getBusquedaProductoEnSucursal(int idSucursalActual, String marca, String descripcion, String talle);
 
+    public List<ProductoModel> getAllProductoSuc(int id);
 }

@@ -1,6 +1,5 @@
 package com.objetosdos.spring.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,22 +16,19 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPedido;
 	
-	@OneToOne//(cascade = CascadeType.ALL)
-	private Producto producto;
+	@ManyToOne//(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idLote")
+	private Lote producto;
 	
 	private int cantidad;
 	private boolean aceptado;
-	
-	@OneToOne //(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idvendedor")
-	private Vendedor vendedorAuxiliar;
+
 	
 	
-	/*
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idvendedor", nullable=true) // En la tabla venta se relaciona con idventa la venta
 	private Vendedor vendedorAuxiliar;
-	*/
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idventa", nullable=true) // En la tabla venta se relaciona con idventa la venta
 	private Venta venta;
@@ -41,7 +37,7 @@ public class Pedido {
 		
 	}
 	
-	public Pedido(int idPedido,Producto producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado, Venta venta) {
+	public Pedido(int idPedido,Lote producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado, Venta venta) {
 		super();
 		this.idPedido = idPedido;
 		this.producto = producto;
@@ -51,11 +47,11 @@ public class Pedido {
 		this.venta = venta;
 	}
 	
-	public Producto getProducto() {
+	public Lote getProducto() {
 		return producto;
 	}
 	
-	public void setProducto(Producto producto) {
+	public void setProducto(Lote producto) {
 		this.producto = producto;
 	}
 	

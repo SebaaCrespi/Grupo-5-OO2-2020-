@@ -17,7 +17,8 @@ public class LoteConverter {
 	            lotemodel.getCantidadActual(),
 	            lotemodel.getCantidadInicial(),
 	            lotemodel.getFechaIngreso(),
-	            lotemodel.getSucursal()
+	            lotemodel.getSucursal(),
+	            lotemodel.getPedido()
 	            
 	        );
 		}
@@ -29,7 +30,8 @@ public class LoteConverter {
 					lote.getCantidadInicial(),
 					lote.getCantidadActual(),
 					lote.getFechaIngreso(),
-					lote.getSucursal()
+					lote.getSucursal(),
+					lote.getPedido()
 		            
 	        );
 		}

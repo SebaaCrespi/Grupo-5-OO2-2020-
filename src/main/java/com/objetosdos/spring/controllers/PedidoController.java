@@ -27,6 +27,8 @@ public class PedidoController {
 	@Autowired
 	private IPedidoService pedidoService;
 	@Autowired
+	private ILoteService loteService;
+	@Autowired
 	private IProductoService productoService;
 	@Autowired
 	private IVentaService ventaService;
@@ -41,7 +43,7 @@ public class PedidoController {
 		
 		mAV.addObject("pedido", pedidoService.getAll());
 		//mAV.addObject("venta",ventaService.getAll());
-		mAV.addObject("producto",productoService.getAll());
+		mAV.addObject("producto",loteService.getAll());
 		mAV.addObject("vendedorAuxiliar",vendedorService.getAll()); // SI LO SACO NO ME TIRA ERROR EL INDEX
 		mAV.addObject("return", ViewRouteHelper.ROUTE);
 	    return mAV;
@@ -62,7 +64,7 @@ public class PedidoController {
 	public ModelAndView pedido(@PathVariable("id") int id){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_ID);
 		mAV.addObject("pedido", pedidoService.findById(id));
-		mAV.addObject("producto", productoService.getAll());
+		mAV.addObject("producto", loteService.getAll());
 		mAV.addObject("vendedor",vendedorService.getAll());
 		//mAV.addObject("venta",ventaService.getAll());
 		mAV.addObject("return", ViewRouteHelper.PEDIDO_ROOT);

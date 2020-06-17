@@ -27,7 +27,7 @@
 					<td th:text="${g.nombre}"></td>
 					<td th:text="${g.apellido}"></td>
 					<td><th:block th:each="sucursal,iter : ${g.sucursal}">
-							<label th:text="${sucursal.id}"></label>
+							<label th:text="${sucursal.ubicacion.ciudad}"></label>
 							<th:block th:if= "${!iter.last}"><th:block>
 					</td>
 					<td><a th:href="@{/vendedor/{id}(id=${g.idPersona})}"><i class="fas fa-eye"></a></td>
