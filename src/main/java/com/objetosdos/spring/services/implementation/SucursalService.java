@@ -13,7 +13,6 @@ import com.objetosdos.spring.entities.Sucursal;
 import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.SucursalModel;
 import com.objetosdos.spring.repositories.ISucursalRepository;
-import com.objetosdos.spring.services.ILoteService;
 import com.objetosdos.spring.services.ISucursalService;
 
 
@@ -46,6 +45,7 @@ public class SucursalService implements ISucursalService{
 	public void delete(int id) {
 		sucursalRepository.deleteById(id);
 	}
+
 	@Override
 	public List<String> getVariedadTalle(List<Lote> lstLotes){
 		List<String> lstVariedad = new ArrayList<String>();
@@ -67,9 +67,9 @@ public class SucursalService implements ISucursalService{
 		double sindLong = Math.sin(dLong/2);
 		double va1 = Math.pow(sindLat, 2) + Math.pow(sindLong, 2)* Math.cos(Math.toRadians(lat1))*Math.cos(Math.toRadians(lat2));
 		double va2=2*Math.atan2(Math.sqrt(va1), Math.sqrt(1-va1));
-
 		return radioTierra * va2;
 		}
+
 	@Override
 	public List<Double> traerListaDeDistancias(List<SucursalModel> sucursalOrdenada, SucursalModel sucursalActual){
 		List<Double> distancias = new ArrayList<Double>();
@@ -83,6 +83,7 @@ public class SucursalService implements ISucursalService{
 		}
 		return distancias;
 	}	
+
 	@Override
 	public List<SucursalModel> traerSucursalesMasCercanas(List<LoteModel> lstLotes, SucursalModel sucursalActual){
 		List<Double> distancias = new ArrayList<Double>();
@@ -101,7 +102,6 @@ public class SucursalService implements ISucursalService{
 		for(int i = 0 ; i < 3 ; i++){
 			if(i < 3){
 				for(SucursalModel s : sucursales){
-					
 					Double distanciaActual = calcularDistancia(
 						sucursalActual.getUbicacion().getLatitud(),
 						sucursalActual.getUbicacion().getLongitud(),

@@ -6,6 +6,7 @@ import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Sucursal;
 import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.SucursalModel;
+import com.objetosdos.spring.models.VendedorModel;
 
 
 public interface ISucursalService {
@@ -25,4 +26,5 @@ public interface ISucursalService {
     public List<Double> traerListaDeDistancias(List<SucursalModel> sucursalOrdenada, SucursalModel sucursalActual);
     
     public List<SucursalModel> traerSucursalesMasCercanas(List<LoteModel> lstLotes, SucursalModel sucursalActual);
+
 }

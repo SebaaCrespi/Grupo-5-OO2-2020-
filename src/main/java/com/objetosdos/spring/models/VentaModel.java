@@ -5,9 +5,6 @@ import java.time.LocalTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.objetosdos.spring.entities.Cliente;
-import com.objetosdos.spring.entities.Vendedor;
-
 public class VentaModel {
 
 	

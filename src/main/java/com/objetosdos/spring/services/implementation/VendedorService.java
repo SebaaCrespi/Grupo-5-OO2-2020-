@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.objetosdos.spring.converters.VendedorConverter;
-import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Vendedor;
-import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.repositories.IVendedorRepository;
 import com.objetosdos.spring.services.IVendedorService;
@@ -49,18 +47,13 @@ public class VendedorService implements IVendedorService{
 		}
 		 
 	 } 
+
 	@Override
-	public List<VendedorModel> getVendedor(int idSucursalActual){
-		
+	public List<VendedorModel> getVendedoresPorSucursal(int idSucursal){
 		List<VendedorModel> lstvendor = new ArrayList<VendedorModel>();
-        for(Vendedor vendor : getAll()){
-            if(vendor.getSucursal().getId() == idSucursalActual){
-                lstvendor.add(vendedorConverter.entityToModel(vendor));
-            }
+		for(Vendedor v : vendedorRepository.traerVendedoresDeSucursal(idSucursal)){
+			lstvendor.add(vendedorConverter.entityToModel(v));
 		}
 		return lstvendor;
-		
 	}
-	
-
 }

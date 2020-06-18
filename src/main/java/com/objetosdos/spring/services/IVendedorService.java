@@ -16,6 +16,6 @@ public interface IVendedorService {
 	    
 	    public boolean remove(int id);
 	    
-	    public List<VendedorModel> getVendedor(int idSucursalActual);
+	    public List<VendedorModel> getVendedoresPorSucursal(int idSucursal);
 
 }

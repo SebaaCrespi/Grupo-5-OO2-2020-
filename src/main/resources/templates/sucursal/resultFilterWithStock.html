@@ -17,6 +17,15 @@
         <td th:text="${producto.marca}"></td>
         <td th:text="${lote.talle}"></td>
         <td th:text="${lote.cantidadActual}"></td>
-        <td>seleccionar cant y vendedor (boton generar pedido)</td>
+        <td>
+            <form action="#" th:action="@{/sucursal/pedido/new/{idLote}(idLote = ${lote.idLote})/{idSucursal}(idSucursal = ${idSucursal})}" 
+            object="${pedido}" method="post">
+                <input th:type="number" th:min="1" th:max="${lote.cantidadActual}" th:field="${cantidad}" value="${pedido.cantidad}">
+                <select th:field="*{vendedorAuxiliar}">
+                    <option th:each="vendedor : ${vendedores}" th:value="${vendedor}" th:text="${vendedor.nombre+' '+vendedor.apellido}"></option>
+                </select>
+                <input type="submit" >Pedido</a>
+            </form>
+        </td>
     </tr>
 </table>

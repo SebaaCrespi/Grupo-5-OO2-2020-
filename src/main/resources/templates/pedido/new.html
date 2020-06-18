@@ -16,12 +16,7 @@
 				<option th:each="p : ${producto}" th:value="${p.id}"
 					th:text="${p.descripcion}"></option>
 			</select>
-			
-		  
-            
-            
-         
-			
+
 			<label>CANTIDAD</label>
 			<input type="text" th:field="*{cantidad}" />
 			
@@ -31,7 +26,6 @@
 					th:text="${v.nombre+''+v.apellido}">
 					</option>
 			</select> 
-			
 					
 			<input type="submit" value="Crear" />
 		</form>

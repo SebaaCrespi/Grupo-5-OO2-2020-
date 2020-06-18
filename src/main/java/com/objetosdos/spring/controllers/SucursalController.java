@@ -17,10 +17,10 @@ import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.PedidoModel;
 import com.objetosdos.spring.models.SucursalModel;
+import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.services.IGerenteService;
 import com.objetosdos.spring.services.ILoteService;
 import com.objetosdos.spring.services.IPedidoService;
-import com.objetosdos.spring.services.IProductoService;
 import com.objetosdos.spring.services.ISucursalService;
 import com.objetosdos.spring.services.IVendedorService;
 
@@ -35,8 +35,6 @@ public class SucursalController {
 	private IGerenteService gerenteServices;
 	@Autowired
 	private ILoteService loteServices;
-	@Autowired
-	private IProductoService productoService;
 	@Autowired
 	private IVendedorService vendedorService;
 	@Autowired
@@ -96,6 +94,10 @@ public class SucursalController {
 		mAV.addObject("marcas", loteServices.getAllMarca());
         mAV.addObject("lotes", lstLotes );
 		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
+		mAV.addObject("pedido", new PedidoModel());
+		List<VendedorModel> vendedor = vendedorService.getVendedoresPorSucursal(id);
+		System.out.println(vendedor);
+		mAV.addObject("vendedores", vendedor);
 		return mAV;
 	}
 
@@ -139,40 +141,31 @@ public class SucursalController {
 		else{
 			//mostrar la vista del lote encontrado para generar pedido en sucursal actual
 			mAV.setViewName(ViewRouteHelper.LOCAL_WITH_STOCK);
+			mAV.addObject("pedido", new PedidoModel());
+			mAV.addObject("vendedores", vendedorService.getVendedoresPorSucursal(id));
 		}
 		mAV.addObject("lote", lote);
 		return mAV;
 	}
 	
-	
+	/*
 	@GetMapping("/pedido/new/{id}")
-	//public ModelAndView newPedido(){
-		//ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_PEDIDO);
-		public ModelAndView pedidos(@PathVariable("id") int id){
-		
-		
-		
+	public ModelAndView pedidos(@PathVariable("id") int id){		
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_PEDIDO);
 		mAV.addObject("sucursal", sucursalServices.findById(id));
-
 		mAV.addObject("producto", loteServices.getLotes(id));
-		mAV.addObject("vendedor", vendedorService.getVendedor(id));
-		
+		mAV.addObject("vendedor", vendedorService.getVendedoresPorSucursal(id));
 		mAV.addObject("pedido", new PedidoModel());
-		
-		//mAV.addObject("vendedor", vendedorService.getAll());
-		//mAV.addObject("venta", ventaService.getAll());
 		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
 		return mAV;
 	}   
-	
-	
-	@PostMapping("/pedido/create")
-	public RedirectView savePedido(@ModelAttribute("pedido") PedidoModel pedidoModel){
-		
+	*/
+	@PostMapping("/pedido/create/{idSucursal}")
+	public RedirectView savePedido(
+		@ModelAttribute("pedido") PedidoModel pedidoModel,
+		@PathVariable("idSucursal") int idSucursal
+		){
 		pedidoService.insertOrUpdate(pedidoModel);
 		return new  RedirectView (ViewRouteHelper.PEDIDO_ROOT);
-	
-
 	}
 }
