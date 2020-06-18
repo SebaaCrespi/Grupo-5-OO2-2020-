@@ -46,8 +46,17 @@
                         <td th:text="${producto.marca}"></td>
                         <td th:text="${l.talle}"></td>
                         <td th:text="${l.cantidadActual}"></td>
-                        
-                        <td><a th:href="@{/sucursal/pedido/new/{id}(id = ${idSucursal})}">pedido</a></td>
+                        <td>
+                            <form action="#" th:action="@{/sucursal/pedido/create/{idSucursal}(idSucursal = ${idSucursal})}" 
+                            object="${pedido}" method="POST">
+                                <input th:type="number" th:min="1" th:max="${l.cantidadActual}" th:field="*{pedido.cantidad}">
+                                <input type="hidden" th:field="*{pedido.producto}" th:value="${l.idLote}">
+                                <select th:field="*{pedido.vendedorAuxiliar}">
+                                    <option th:each="vendedor : ${vendedores}" th:value="${vendedor}" th:text="${vendedor.nombre+' '+vendedor.apellido}"></option>
+                                </select>
+                                <input type="submit" value="Pedido"></a>
+                            </form>
+                        </td>
                     </tr>
                 </table>
             </div>

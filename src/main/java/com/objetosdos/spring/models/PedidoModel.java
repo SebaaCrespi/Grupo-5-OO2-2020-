@@ -1,7 +1,6 @@
 package com.objetosdos.spring.models;
 
 import com.objetosdos.spring.entities.Lote;
-import com.objetosdos.spring.entities.Producto;
 import com.objetosdos.spring.entities.Vendedor;
 import com.objetosdos.spring.entities.Venta;
 

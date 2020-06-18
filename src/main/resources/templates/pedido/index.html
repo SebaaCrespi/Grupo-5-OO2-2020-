@@ -50,7 +50,7 @@
                         <a th:href="@{/pedido/{id}(id=${p.idPedido})}"><i class="fas fa-eye"></i></a>
                     </td>
                     <td>
- 				<form action="#" th:action="@{/pedido/remove/{id}(id=${p.idPedido})}" method="post" > 
+ 				    <form action="#" th:action="@{/pedido/remove/{id}(id=${p.idPedido})}" method="post" class="delete"> 
 							
                             <input type="submit" value="ELIMINAR">
                             

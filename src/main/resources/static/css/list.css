@@ -69,13 +69,13 @@ td{
 .btn-effect{
     transform: scale(0.9);
 }
-td form{
+.delete{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-td form input{
+.delete input{
     margin:0 auto;
     padding:0px 10px;
     border:none;
@@ -84,18 +84,18 @@ td form input{
     z-index: 0;
     cursor: pointer;
 }
-td form div{
+.delete div{
     position: absolute;
 }
 td a i,
-td form div i{
+.delete div i{
     z-index: 10;
     color:#333;
     transition: all 0.4s ease;
     cursor: pointer;
 }
 td a i:hover,
-td form div i:hover{
+.delete div i:hover{
     color:rgb(35, 39, 105);
     transform: scale(1.7);
 }
