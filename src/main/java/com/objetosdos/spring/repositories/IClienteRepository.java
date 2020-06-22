@@ -17,10 +17,10 @@ public interface IClienteRepository extends JpaRepository<Cliente,Serializable>{
 
 	public abstract Cliente findByApellido(String apellido);
 	
-	
 	public abstract Cliente findByFechaNacimiento(String fechaNacimiento);
 	
 	public abstract Cliente findByDni(long l);
+	
 	public abstract Cliente findByMail(String mail);
 
 }

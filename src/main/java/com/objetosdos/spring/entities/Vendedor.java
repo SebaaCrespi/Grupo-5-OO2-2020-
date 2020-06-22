@@ -2,7 +2,9 @@ package com.objetosdos.spring.entities;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -22,7 +24,7 @@ public class Vendedor extends Empleado{
 	private Sucursal sucursal;
 	
 	@OneToMany(fetch=FetchType.LAZY,mappedBy = "vendedorAuxiliar") 
-	private Set<Pedido> lstPedido= new HashSet<Pedido>(); 
+	private List<Pedido> lstPedido= new ArrayList<Pedido>(); 
 
 public Vendedor(){
 	
@@ -36,10 +38,10 @@ public Vendedor(){
 
 
 	
-	public Set<Pedido> getLstPedido() {
+	public List<Pedido> getLstPedido() {
 		return lstPedido;
 	}
-	public void setLstPedido(Set<Pedido> lstPedido) {
+	public void setLstPedido(List<Pedido> lstPedido) {
 		this.lstPedido = lstPedido;
 	}
 	public float getPlus() {
