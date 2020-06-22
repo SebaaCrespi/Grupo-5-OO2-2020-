@@ -95,9 +95,7 @@ public class SucursalController {
         mAV.addObject("lotes", lstLotes );
 		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
 		mAV.addObject("pedido", new PedidoModel());
-		List<VendedorModel> vendedor = vendedorService.getVendedoresPorSucursal(id);
-		System.out.println(vendedor);
-		mAV.addObject("vendedores", vendedor);
+		mAV.addObject("vendedores", vendedorService.getVendedoresPorSucursal(id));
 		return mAV;
 	}
 
@@ -166,6 +164,6 @@ public class SucursalController {
 		@PathVariable("idSucursal") int idSucursal
 		){
 		pedidoService.insertOrUpdate(pedidoModel);
-		return new  RedirectView (ViewRouteHelper.PEDIDO_ROOT);
+		return new  RedirectView ("/"+ViewRouteHelper.LOCAL_STOCK+"/"+idSucursal);
 	}
 }

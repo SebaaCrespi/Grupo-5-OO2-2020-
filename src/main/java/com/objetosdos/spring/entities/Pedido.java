@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -18,15 +17,13 @@ public class Pedido {
 	
 	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idLote")
-	private Lote producto;
+	private Lote lote;
 	
 	private int cantidad;
 	private boolean aceptado;
 
-	
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idvendedor", nullable=true) // En la tabla venta se relaciona con idventa la venta
+	@JoinColumn(name="idvendedor", nullable=true)
 	private Vendedor vendedorAuxiliar;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -37,22 +34,21 @@ public class Pedido {
 		
 	}
 	
-	public Pedido(int idPedido,Lote producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado, Venta venta) {
+	public Pedido(int idPedido,Lote lote, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado) {
 		super();
 		this.idPedido = idPedido;
-		this.producto = producto;
+		this.lote = lote;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
 		this.vendedorAuxiliar=vendedorAuxiliar;
-		this.venta = venta;
 	}
 	
-	public Lote getProducto() {
-		return producto;
+	public Lote getLote() {
+		return lote;
 	}
 	
-	public void setProducto(Lote producto) {
-		this.producto = producto;
+	public void setLote(Lote lote) {
+		this.lote = lote;
 	}
 	
 	public int getCantidad() {
@@ -94,7 +90,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "\n  Pedido [producto=" + producto + ", cantidad=" + cantidad + "]";
+		return "\n  Pedido [producto=" + lote + ", cantidad=" + cantidad + "]";
 	}
 
 }

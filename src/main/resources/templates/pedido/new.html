@@ -12,11 +12,9 @@
 			method="post">
 			
 			<label>PRODUCTO</label>
-			<select th:field="*{producto.id}">
-				<option th:each="p : ${producto}" th:value="${p.id}"
-					th:text="${p.descripcion}"></option>
+			<select th:field="*{lote.idLote}">
+				<option th:each="l : ${lotes}" th:value="${l.idLote}" th:text="${l.idLote}"></option>
 			</select>
-
 			<label>CANTIDAD</label>
 			<input type="text" th:field="*{cantidad}" />
 			

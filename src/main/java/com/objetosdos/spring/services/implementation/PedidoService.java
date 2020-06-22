@@ -33,8 +33,6 @@ public class PedidoService implements IPedidoService {
 	
 	@Autowired
 	private ILoteService loteServices;
-	@Autowired
-	private LoteConverter loteConverter;
 	
 	@Override
 	public List<Pedido> getAll() {
@@ -44,24 +42,18 @@ public class PedidoService implements IPedidoService {
 
 	@Override
 	public boolean insertOrUpdate(PedidoModel pedidoModel) {
-		
-		
-		
-		try {	if (stockDisponible(pedidoModel)==true) {
-			Pedido p = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
-			PedidoModel pedido =pedidoConverter.entityToModel(p);
-					
-					}
-		return true;
-				}
-	
-			
-		catch (Exception e){
-			return false;
-			
+		boolean retorno = false;
+		Pedido p = null;
+		System.out.println("Antes de entrar al if: "+pedidoModel);
+		if(stockDisponible(pedidoModel)) {
+			System.out.println("Entré al if "+p);	
+			p = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
+			System.out.println("1"+p);		
 		}
-		
-		//return pedido;
+		if(p != null){
+			retorno = true;
+		}
+		return retorno;
 	}
 
 	@Override
@@ -86,22 +78,17 @@ public class PedidoService implements IPedidoService {
 		
 		boolean stock= false;
 		int cant =0;
-		Lote l=null;
-		LoteModel lo=null;
-
-		for (Lote lote : loteServices.getAll()) {
-			
-			if (pedidoModel.getProducto().getIdLote()==lote.getIdLote()) {
-				if (pedidoModel.getCantidad()<=lote.getCantidadActual()) {
+		for (Lote lote : loteServices.getAll()) {	
+			if (pedidoModel.getLote().getIdLote()==lote.getIdLote()) {
+				if (pedidoModel.getCantidad() <= lote.getCantidadActual()) {
 					cant = lote.getCantidadActual()-pedidoModel.getCantidad();
 					lote.setCantidadActual(cant);
-					l= loteRepository.save(lote);
-					lo= loteConverter.entityToModel(l);
+					loteRepository.save(lote);
 					stock= true;
 				}
-	}
-			
-}
+			}
+		}
+		System.out.println("Stock: "+stock);
 		return stock;
 	}
-	}
+}

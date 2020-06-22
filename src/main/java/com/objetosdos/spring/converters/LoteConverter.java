@@ -27,8 +27,8 @@ public class LoteConverter {
 					lote.getIdLote(),
 					lote.getProducto(),
 					lote.getTalle(),
-					lote.getCantidadInicial(),
 					lote.getCantidadActual(),
+					lote.getCantidadInicial(),
 					lote.getFechaIngreso(),
 					lote.getSucursal(),
 					lote.getPedido()
