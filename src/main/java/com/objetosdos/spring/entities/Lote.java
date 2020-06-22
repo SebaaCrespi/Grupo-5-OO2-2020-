@@ -51,24 +51,23 @@ public class Lote {
 		@JoinColumn(name="idsucursal", nullable=true) // En la tala vendedor se relaciona con idsucursal la sucursal
 		private Sucursal sucursal;
 		
-		@OneToMany(mappedBy = "producto") // como esta en la entidad pedido lote--producto.
+		@OneToMany(mappedBy = "lote") // como esta en la entidad pedido lote--producto.
 		private List<Pedido> pedido; //agregado.
 		
 	public Lote () {
 		
-		
 	}
-			public Lote(int idLote,Producto producto, String talle,int cantidadActual, int cantidadInicial, LocalDate fechaIngreso, Sucursal sucursal,List<Pedido> pedido) {
-			super();
-			this.idLote=idLote;
-			this.producto = producto;
-			this.talle = talle;
-			this.cantidadActual = cantidadActual;
-			this.cantidadInicial = cantidadInicial;
-			this.fechaIngreso = fechaIngreso;
-			this.sucursal=sucursal;
-			this.pedido=pedido;
-		}
+	public Lote(int idLote,Producto producto, String talle,int cantidadActual, int cantidadInicial, LocalDate fechaIngreso, Sucursal sucursal,List<Pedido> pedido) {
+		super();
+		this.idLote=idLote;
+		this.producto = producto;
+		this.talle = talle;
+		this.cantidadActual = cantidadActual;
+		this.cantidadInicial = cantidadInicial;
+		this.fechaIngreso = fechaIngreso;
+		this.sucursal=sucursal;
+		this.pedido=pedido;
+	}
 
 
 		public List<Pedido> getPedido() {

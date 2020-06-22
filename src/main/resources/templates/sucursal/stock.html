@@ -40,7 +40,7 @@
                         <td>PEDIDO</td>
                     </tr>
                     <tr th:each="l : ${lotes}">
-                        <td th:text="${l.idLote}"></td>
+                        <td th:text="${l.idLote}" class="idlote"></td>
                         <th:block th:each="producto,iter : ${l.producto}">
                         <td th:text="${producto.descripcion}"></td>
                         <td th:text="${producto.marca}"></td>
@@ -48,11 +48,13 @@
                         <td th:text="${l.cantidadActual}"></td>
                         <td>
                             <form action="#" th:action="@{/sucursal/pedido/create/{idSucursal}(idSucursal = ${idSucursal})}" 
-                            object="${pedido}" method="POST">
-                                <input th:type="number" th:min="1" th:max="${l.cantidadActual}" th:field="*{pedido.cantidad}">
-                                <input type="hidden" th:field="*{pedido.producto}" th:value="${l.idLote}">
-                                <select th:field="*{pedido.vendedorAuxiliar}">
-                                    <option th:each="vendedor : ${vendedores}" th:value="${vendedor}" th:text="${vendedor.nombre+' '+vendedor.apellido}"></option>
+                            th:object="${pedido}" method="POST">
+                                <input th:type="number" th:min="1" th:max="${l.cantidadActual}" th:field="${pedido.cantidad}">
+                                <select th:field="*{lote.idLote}" style="display: none;">
+                                    <option th:value="${l.idLote}"></option>
+                                </select>
+                                <select th:field="*{vendedorAuxiliar.idPersona}">
+                                    <option th:each="vendedor : ${vendedores}" th:value="${vendedor.idPersona}" th:text="${vendedor.nombre+' '+vendedor.apellido}"></option>
                                 </select>
                                 <input type="submit" value="Pedido"></a>
                             </form>
@@ -62,50 +64,6 @@
             </div>
         </div>
         <script src="../../static/js/jquery-3.4.1.min.js" th:src="@{/js/jquery-3.4.1.min.js}"></script>
-        <script>
-            $('#marca').change(() => {
-                var marca = $('#marca').val();
-                $.ajax({
-                    method: "GET",
-                    url: "/sucursal/filter/"+marca
-                })
-                .done((result) => {
-                    $('#descripcion').html(result);
-                })
-                .fail(()=>{
-                    alert("Error");
-                });
-            });
-            $('#descripcion').change(() => {
-                var marca = $('#marca').val();
-                var descripcion = $('#descripcion').val();
-                $.ajax({
-                    method: "GET",
-                    url: "/sucursal/filter/"+marca+'/'+descripcion
-                })
-                .done((result) => {
-                    $('#talle').html(result);
-                })
-                .fail(()=>{
-                    alert("Error");
-                });
-            });
-            $('#buscar').click(() => {
-                var id = $('#idSucursal').val();
-                var marca = $('#marca').val();
-                var descripcion = $('#descripcion').val();
-                var talle = $('#talle').val();
-                $.ajax({
-                    method: "GET",
-                    url: "/sucursal/filter/"+id+"/"+marca+"/"+descripcion+"/"+talle
-                })
-                .done((result) => {
-                    $('#lotes').html(result);
-                })
-                .fail(()=>{
-                    alert("Error");
-                });
-            });
-        </script>
+        <script src="../../static/js/stock.js" th:src="@{/js/stock.js}"></script>
 </body>
 </html>
