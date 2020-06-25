@@ -32,31 +32,11 @@ public class PedidoService implements IPedidoService {
 	private PedidoConverter pedidoConverter;
 	@Autowired
 	private ILoteService loteServices;
-	@Autowired
-	private LoteConverter loteConverter;
-
+  
 	@Override
 	public List<Pedido> getAll() {
 
 		return pedidoRepository.findAll();
-	}
-
-	@Override
-	public boolean insertOrUpdate(PedidoModel pedidoModel) {
-
-		try {
-			if (stockDisponible(pedidoModel) == true) {
-				Pedido p = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
-				PedidoModel pedido = pedidoConverter.entityToModel(p);
-
-			}
-			return true;
-		} catch (Exception e) {
-			return false;
-
-		}
-
-		// return pedido;
 	}
 
 	@Override
@@ -76,37 +56,5 @@ public class PedidoService implements IPedidoService {
 
 	}
 
-	@Override
-	public boolean stockDisponible(PedidoModel pedidoModel) {
-
-		boolean stock = false;
-		int cant = 0;
-		Lote l = null;
-		LoteModel lo = null;
-
-		for (Lote lote : loteServices.getAll()) {
-
-			if (pedidoModel.getProducto().getIdLote() == lote.getIdLote()) {
-				if (pedidoModel.getCantidad() <= lote.getCantidadActual()) {
-					cant = lote.getCantidadActual() - pedidoModel.getCantidad();
-					lote.setCantidadActual(cant);
-					l = loteRepository.save(lote);
-					lo = loteConverter.entityToModel(l);
-					stock = true;
-				}
-			}
-
-		}
-		return stock;
-	}
-
-	@Override
-	public List<PedidoModel> getPedidoSucursal(int id) {
-		
-		List <PedidoModel> lstPed = new ArrayList<PedidoModel>();
-		for(Pedido p : pedidoRepository.traerPedidosPorSucursal(id)) {
-			lstPed.add(pedidoConverter.entityToModel(p));
-		}
-		return lstPed;
-	}
+	
 }

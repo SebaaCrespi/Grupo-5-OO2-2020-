@@ -1,30 +1,24 @@
 package com.objetosdos.spring.models;
 
-import com.objetosdos.spring.entities.Lote;
-import com.objetosdos.spring.entities.Vendedor;
-import com.objetosdos.spring.entities.Venta;
-
 public class PedidoModel {
 
 	private int idPedido;
-	private Lote producto;
+	private LoteModel lote;
 	private int cantidad;
 	private boolean aceptado;
-	private Vendedor vendedorAuxiliar;
-	private Venta venta;
+	private VendedorModel vendedorAuxiliar;
+	private VentaModel venta;
 	
 	public PedidoModel() {
 		
 	}
 	
-	public PedidoModel(int idPedido, Lote producto, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado,Venta venta) {
+	public PedidoModel(int idPedido, LoteModel lote, int cantidad, VendedorModel vendedorAuxiliar, boolean aceptado) {
 		super();
-		this.producto = producto;
+		this.lote = lote;
 		this.vendedorAuxiliar=vendedorAuxiliar;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
-		this.venta = venta;
-		this.venta = venta;
 	}
 
 	public int getIdPedido() {
@@ -35,12 +29,12 @@ public class PedidoModel {
 		this.idPedido = idPedido;
 	}
 
-	public Lote getProducto() {
-		return producto;
+	public LoteModel getLote() {
+		return lote;
 	}
 
-	public void setProducto(Lote producto) {
-		this.producto = producto;
+	public void setLote(LoteModel lote) {
+		this.lote = lote;
 	}
 
 	public int getCantidad() {
@@ -59,19 +53,19 @@ public class PedidoModel {
 		this.aceptado = aceptado;
 	}
 
-	public Vendedor getVendedorAuxiliar() {
+	public VendedorModel getVendedorAuxiliar() {
 		return vendedorAuxiliar;
 	}
 
-	public void setVendedorAuxiliar(Vendedor vendedorAuxiliar) {
+	public void setVendedorAuxiliar(VendedorModel vendedorAuxiliar) {
 		this.vendedorAuxiliar = vendedorAuxiliar;
 	}
 
-	public Venta getVenta() {
+	public VentaModel getVenta() {
 		return venta;
 	}
 
-	public void setVenta(Venta venta) {
+	public void setVenta(VentaModel venta) {
 		this.venta = venta;
 	}
 

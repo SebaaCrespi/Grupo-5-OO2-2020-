@@ -50,7 +50,7 @@ public class PedidoController {
 	public ModelAndView newPedido(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NEW);
 		mAV.addObject("pedido", new PedidoModel());
-		mAV.addObject("producto", productoService.getAll());
+		mAV.addObject("lotes", loteService.getAll());
 		mAV.addObject("vendedor", vendedorService.getAll());
 		//mAV.addObject("venta", ventaService.getAll());
 		mAV.addObject("return", ViewRouteHelper.PEDIDO_ROOT);
@@ -73,13 +73,12 @@ public class PedidoController {
 	public RedirectView remove(@PathVariable("id") int id) {
 		pedidoService.delete(id);
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
-	
-}
-	
-	
+	}
+
 	@PostMapping("/create")
 	public RedirectView savePedido(@ModelAttribute("pedido") PedidoModel pedidoModel){
 		pedidoService.insertOrUpdate(pedidoModel);
+		System.out.println(pedidoModel);
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
 	
 
