@@ -12,5 +12,5 @@ public interface IVentaService {
 	public VentaModel findById(int id);
 	
 	public VentaModel insertOrUptade(VentaModel ventaModel);
-	
+
 }

@@ -69,11 +69,6 @@ public class PedidoModel {
 		this.venta = venta;
 	}
 
-	@Override
-	public String toString() {
-		return "PedidoModel [aceptado=" + aceptado + ", cantidad=" + cantidad + ", idPedido=" + idPedido + ", lote="
-				+ lote + ", vendedorAuxiliar=" + vendedorAuxiliar + ", venta=" + venta + "]";
-	}
 	
 	
 }

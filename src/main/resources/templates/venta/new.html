@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../static/css/home/home.css" th:href="@{/css/home/home.css}" rel="stylesheet" />
-    <title>GRUPO 5 OO2 2020</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../static/css/home/home.css"
+	th:href="@{/css/home/home.css}" rel="stylesheet" />
+<title>GRUPO 5 OO2 2020</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Venta</h1>
-        </header>
-        <div class="buttons">
-           
-        </div>
-    </div>
+	<div class="return-btn">
+		<a href="#" th:href="@{{link}(link = ${return})}"><i
+			class="fas fa-arrow-left"></i></a>
+	</div>
+	<header>
+		<h1>Venta</h1>
+	</header>
+	<div class="container">
+		<div class="table">
+			<div class="title">
+				<h2>Pedidos</h2>
+			</div>
+			<table>
+				<tr class="strong">
+					<td>ID</td>
+					<td>PRODUCTO</td>
+					<td>CANTIDAD</td>
+					<td>ACEPTADO</td>
+					<td>VENDEDOR</td>
+					<td>AGREGAR</td>
+					<td>ELIMINAR</td>
+				</tr>
+				<tr th:each="p : ${pedido}">
+
+					<td th:text="${p.idPedido}"></td>
+					<td>
+						<th:block th:each="lote.iter : ${p.lote}">
+						<th:block th:each="producto.iter : ${lote.producto}">
+						<label th:text="${producto.descripcion}"></label>
+						<th:block th:if="${!iter.last}"><th:block>
+					</td>
+					<td th:text="${p.cantidad}"></td>
+					<td th:text="${p.aceptado}"></td>
+					<td></td>
+					<td>
+						<form action="#" th:action="" class="add">
+							<div>
+								<i class="fas fa-minus-circle"></i>
+							</div>
+							<input type="submit" value="">
+						</form>
+					<td>
+						<form action="#" th:action="" class="delete">
+							<div>
+								<i class="fas fa-minus-circle"></i>
+							</div>
+							<input type="submit" value="">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
