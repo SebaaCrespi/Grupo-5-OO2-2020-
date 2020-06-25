@@ -19,6 +19,4 @@ public interface IPedidoService {
 	    
 	    public boolean delete(int id);
 	    
-	    public List<PedidoModel> getPedidoSucursal(int id);
-
 }
