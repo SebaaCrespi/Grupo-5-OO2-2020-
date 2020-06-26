@@ -25,17 +25,7 @@
                     <td>ELIMINAR</td>
                 </tr>
                 <tr th:each="p : ${pedido}">
-                    <td th:text="${p.idPedido}"></td>
-                    
-                    <td><th:block th:each="lote,iter : ${p.producto}">
-						<label th:text="${lote.producto.descripcion}"></label>
-						<th:block th:if= "${!iter.last}"><th:block>
-				    </td>
-				    <td><th:block th:each="lote,iter : ${p.producto}">
-						<label th:text="${lote.talle}"></label>
-						<th:block th:if= "${!iter.last}"><th:block>
-				    </td>
-				    
+                    <td th:text="${p.idPedido}"></td>		    
 				    
                     <td th:text="${p.cantidad}"></td>
                     

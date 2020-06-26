@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.objetosdos.spring.entities.Sucursal;
 import com.objetosdos.spring.models.SucursalModel;
+import com.objetosdos.spring.repositories.ISucursalRepository;
 
 @Component
 public class SucursalConverter {
@@ -13,6 +14,8 @@ public class SucursalConverter {
 	private DireccionConverter direccionConverter;
 	@Autowired
 	private GerenteConverter gerenteConverter;
+	@Autowired
+	private ISucursalRepository sucursalRepository;
 
 	public SucursalModel entityToModel(Sucursal sucursal) {
 		return new SucursalModel(
@@ -22,8 +25,9 @@ public class SucursalConverter {
 			gerenteConverter.entityToModel(sucursal.getGerente())
 		);
 	}
-	
-		
+	public Sucursal modelToEntityWithId(SucursalModel sucursalModel){
+		return sucursalRepository.findById(sucursalModel.getId());
+	}		
 	public Sucursal modelToEntity(SucursalModel sucursalModel) {
 		return new Sucursal(
 			sucursalModel.getId(),

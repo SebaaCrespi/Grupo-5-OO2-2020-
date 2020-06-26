@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.objetosdos.spring.converters.LoteConverter;
 import com.objetosdos.spring.converters.PedidoConverter;
 import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Pedido;
-import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.PedidoModel;
 import com.objetosdos.spring.repositories.ILoteRepository;
 import com.objetosdos.spring.repositories.IPedidoRepository;
@@ -20,7 +18,6 @@ import com.objetosdos.spring.services.IPedidoService;
 
 @Service
 public class PedidoService implements IPedidoService {
-
 	
 	@Autowired
 	private IPedidoRepository pedidoRepository;
@@ -44,11 +41,8 @@ public class PedidoService implements IPedidoService {
 	public boolean insertOrUpdate(PedidoModel pedidoModel) {
 		boolean retorno = false;
 		Pedido p = null;
-		System.out.println("Antes de entrar al if: "+pedidoModel);
 		if(stockDisponible(pedidoModel)) {
-			System.out.println("Entré al if "+p);	
 			p = pedidoRepository.save(pedidoConverter.modelToEntity(pedidoModel));
-			System.out.println("1"+p);		
 		}
 		if(p != null){
 			retorno = true;
@@ -88,7 +82,10 @@ public class PedidoService implements IPedidoService {
 				}
 			}
 		}
-		System.out.println("Stock: "+stock);
 		return stock;
 	}
+	@Override
+    public List<Pedido> getPedidoSucursal(int id) {
+        return pedidoRepository.traerPedidosPorSucursal(id);
+    }
 }

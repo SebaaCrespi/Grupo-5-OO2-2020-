@@ -21,26 +21,31 @@ public class Pedido {
 	
 	private int cantidad;
 	private boolean aceptado;
+	private boolean vendido;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idvendedor", nullable=true)
 	private Vendedor vendedorAuxiliar;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="idventa", nullable=true) // En la tabla venta se relaciona con idventa la venta
+	@JoinColumn(name="idSucursal", nullable=true)
+	private Sucursal sucursal;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="idVenta", nullable=true)
 	private Venta venta;
 	
 	public Pedido() {
 		
 	}
 	
-	public Pedido(int idPedido,Lote lote, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado) {
-		super();
+	public Pedido(int idPedido,Lote lote, int cantidad, Vendedor vendedorAuxiliar, boolean aceptado, Sucursal sucursal, boolean vendido) {
 		this.idPedido = idPedido;
 		this.lote = lote;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
 		this.vendedorAuxiliar=vendedorAuxiliar;
+		this.sucursal = sucursal;
 	}
 	
 	public Lote getLote() {
@@ -79,6 +84,25 @@ public class Pedido {
 	public void setIdPedido(int idPedido) {
 		this.idPedido = idPedido;
 	}
+	public boolean isVendido() {
+		return vendido;
+	}
+	public void setVendido(boolean vendido) {
+		this.vendido = vendido;
+	}
+
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
+	}
+	
+	@Override
+	public String toString() {
+		return "\n  Pedido [producto=" + lote + ", cantidad=" + cantidad + "]";
+	}
 
 	public Venta getVenta() {
 		return venta;
@@ -88,9 +112,6 @@ public class Pedido {
 		this.venta = venta;
 	}
 
-	@Override
-	public String toString() {
-		return "\n  Pedido [producto=" + lote + ", cantidad=" + cantidad + "]";
-	}
+	
 
 }

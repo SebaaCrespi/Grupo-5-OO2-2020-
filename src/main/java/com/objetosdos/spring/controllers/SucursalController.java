@@ -131,6 +131,8 @@ public class SucursalController {
 				mAV.setViewName(ViewRouteHelper.LOCAL_LOTE_IN_OTHER_SUCURSAL);
 				mAV.addObject("sucursales", sucursalesCercanas);
 				mAV.addObject("distancias", sucursalServices.traerListaDeDistancias(sucursalesCercanas, sucursalActual));
+				mAV.addObject("lotes", loteServices.getBusquedaProducto(marca, desc, talle));
+				mAV.addObject("pedido", new PedidoModel());
 			}
 			else{
 				mAV.setViewName(ViewRouteHelper.LOCAL_WITHOUT_STOCK);
@@ -141,29 +143,10 @@ public class SucursalController {
 			mAV.setViewName(ViewRouteHelper.LOCAL_WITH_STOCK);
 			mAV.addObject("pedido", new PedidoModel());
 			mAV.addObject("vendedores", vendedorService.getVendedoresPorSucursal(id));
+			mAV.addObject("lote", lote);
 		}
-		mAV.addObject("lote", lote);
+		
+		mAV.addObject("idSucursalPedido", id);
 		return mAV;
-	}
-	
-	/*
-	@GetMapping("/pedido/new/{id}")
-	public ModelAndView pedidos(@PathVariable("id") int id){		
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_PEDIDO);
-		mAV.addObject("sucursal", sucursalServices.findById(id));
-		mAV.addObject("producto", loteServices.getLotes(id));
-		mAV.addObject("vendedor", vendedorService.getVendedoresPorSucursal(id));
-		mAV.addObject("pedido", new PedidoModel());
-		mAV.addObject("return", ViewRouteHelper.LOCAL_ROOT);
-		return mAV;
-	}   
-	*/
-	@PostMapping("/pedido/create/{idSucursal}")
-	public RedirectView savePedido(
-		@ModelAttribute("pedido") PedidoModel pedidoModel,
-		@PathVariable("idSucursal") int idSucursal
-		){
-		pedidoService.insertOrUpdate(pedidoModel);
-		return new  RedirectView ("/"+ViewRouteHelper.LOCAL_STOCK+"/"+idSucursal);
 	}
 }

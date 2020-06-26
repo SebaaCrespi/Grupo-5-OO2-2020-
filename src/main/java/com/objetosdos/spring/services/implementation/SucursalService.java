@@ -15,7 +15,6 @@ import com.objetosdos.spring.models.SucursalModel;
 import com.objetosdos.spring.repositories.ISucursalRepository;
 import com.objetosdos.spring.services.ISucursalService;
 
-
 @Service
 public class SucursalService implements ISucursalService{
 	
@@ -100,7 +99,7 @@ public class SucursalService implements ISucursalService{
 		}
 		Collections.sort(distancias);
 		for(int i = 0 ; i < 3 ; i++){
-			if(i < 3){
+			if(i < 3 && distancias.size() > i){
 				for(SucursalModel s : sucursales){
 					Double distanciaActual = calcularDistancia(
 						sucursalActual.getUbicacion().getLatitud(),
@@ -113,6 +112,36 @@ public class SucursalService implements ISucursalService{
 				}
 			}
 		}
+		System.out.println(distancias);
+		System.out.println(sucursalesOrdenadas);
 		return sucursalesOrdenadas;
 	}	
+	/*public List<LoteModel> traerLotesMasCercanos(List<LoteModel> lstLotes, SucursalModel sucursalActual){
+		List<LoteModel> lotesCercanos = new ArrayList<LoteModel>();
+		List<Double> distancias = new ArrayList<Double>();
+		for(LoteModel l : lstLotes){
+			distancias.add(calcularDistancia(
+				sucursalActual.getUbicacion().getLatitud(),
+				sucursalActual.getUbicacion().getLongitud(),
+				l.getSucursal().getUbicacion().getLatitud(),
+				l.getSucursal().getUbicacion().getLongitud()
+				));
+		}
+		Collections.sort(distancias);
+		for(int i = 0 ; i < 3 ; i++){
+			if(i < 3 && distancias.size() > i){
+				for(LoteModel l : lstLotes){
+					Double distanciaActual = calcularDistancia(
+						sucursalActual.getUbicacion().getLatitud(),
+						sucursalActual.getUbicacion().getLongitud(),
+						l.getSucursal().getUbicacion().getLatitud(),
+						l.getSucursal().getUbicacion().getLongitud());	
+					if(distancias.get(i).equals(distanciaActual)){
+						lotesCercanos.add(l);
+					}
+				}
+			}
+		}
+		return lotesCercanos;
+	}*/
 }

@@ -7,18 +7,20 @@ public class PedidoModel {
 	private int cantidad;
 	private boolean aceptado;
 	private VendedorModel vendedorAuxiliar;
-	private VentaModel venta;
+	private boolean vendido;
+	private SucursalModel sucursal;
 	
 	public PedidoModel() {
 		
 	}
 	
-	public PedidoModel(int idPedido, LoteModel lote, int cantidad, VendedorModel vendedorAuxiliar, boolean aceptado) {
-		super();
+	public PedidoModel(int idPedido, LoteModel lote, int cantidad, VendedorModel vendedorAuxiliar, boolean aceptado, SucursalModel sucursal, boolean vendido){
 		this.lote = lote;
 		this.vendedorAuxiliar=vendedorAuxiliar;
 		this.cantidad = cantidad;
 		this.aceptado = aceptado;
+		this.sucursal = sucursal;
+		this.vendido = vendido;
 	}
 
 	public int getIdPedido() {
@@ -61,19 +63,26 @@ public class PedidoModel {
 		this.vendedorAuxiliar = vendedorAuxiliar;
 	}
 
-	public VentaModel getVenta() {
-		return venta;
+	public SucursalModel getSucursal() {
+		return sucursal;
 	}
 
-	public void setVenta(VentaModel venta) {
-		this.venta = venta;
+	public void setSucursal(SucursalModel sucursal) {
+		this.sucursal = sucursal;
 	}
 
 	@Override
 	public String toString() {
 		return "PedidoModel [aceptado=" + aceptado + ", cantidad=" + cantidad + ", idPedido=" + idPedido + ", lote="
-				+ lote + ", vendedorAuxiliar=" + vendedorAuxiliar + ", venta=" + venta + "]";
+				+ lote + ", vendedorAuxiliar=" + vendedorAuxiliar + ", vendido=" + vendido + "]";
 	}
-	
-	
+
+	public boolean isVendido() {
+		return vendido;
+	}
+
+	public void setVendido(boolean vendido) {
+		this.vendido = vendido;
+	}
+
 }
