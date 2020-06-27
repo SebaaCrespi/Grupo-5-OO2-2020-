@@ -11,14 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.objetosdos.spring.helper.ViewRouteHelper;
-import com.objetosdos.spring.models.LoteModel;
 import com.objetosdos.spring.models.PedidoModel;
+import com.objetosdos.spring.models.VendedorModel;
 import com.objetosdos.spring.services.ILoteService;
 import com.objetosdos.spring.services.IPedidoService;
-import com.objetosdos.spring.services.IProductoService;
-import com.objetosdos.spring.services.ISucursalService;
 import com.objetosdos.spring.services.IVendedorService;
-import com.objetosdos.spring.services.IVentaService;
 
 @Controller
 @RequestMapping("/pedido")
@@ -29,15 +26,14 @@ public class PedidoController {
 	@Autowired
 	private ILoteService loteService;
 	@Autowired
-	private IProductoService productoService;
+  private IProductoService productoService;
 	@Autowired
-	private IVendedorService vendedorService;
+  private IVendedorService vendedorService;
 	
 	
 	@GetMapping("")
 	public ModelAndView index(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_INDEX);
-		
 		mAV.addObject("pedido", pedidoService.getAll());
 		//mAV.addObject("venta",ventaService.getAll());
 		mAV.addObject("producto",loteService.getAll());
@@ -55,8 +51,7 @@ public class PedidoController {
 		//mAV.addObject("venta", ventaService.getAll());
 		mAV.addObject("return", ViewRouteHelper.PEDIDO_ROOT);
 		return mAV;
-	}   
-	
+	} 	
 	
 	@GetMapping("/{id}")
 	public ModelAndView pedido(@PathVariable("id") int id){
@@ -77,11 +72,30 @@ public class PedidoController {
 
 	@PostMapping("/create")
 	public RedirectView savePedido(@ModelAttribute("pedido") PedidoModel pedidoModel){
-		pedidoService.insertOrUpdate(pedidoModel);
+		VendedorModel v = null;
+		pedidoModel.setVendedorAuxiliar(v);
 		System.out.println(pedidoModel);
+		/*pedidoService.insertOrUpdate(pedidoModel);*/
 		return new RedirectView(ViewRouteHelper.PEDIDO_ROOT);
-	
-
 	}
-	  
+
+	@PostMapping("/create/{idSucursal}")
+	public RedirectView crearPedidoDesdeSucursal(
+		@ModelAttribute("pedido") PedidoModel pedidoModel,
+		@PathVariable("idSucursal") int idSucursal
+		){
+		pedidoModel.setAceptado(true);
+		System.out.println(pedidoModel.getSucursal());
+		pedidoService.insertOrUpdate(pedidoModel);
+		return new  RedirectView ("/"+ViewRouteHelper.LOCAL_STOCK+"/"+idSucursal);
+	}
+	@PostMapping("/create/solicitud/{idSucursalSolicitada}")
+	public RedirectView crearSolicitudDeStock(
+		@PathVariable("idSucursalActual") int idSucursalActual,
+		@PathVariable("idSucursalSolicitada") int idSucursalSolicitada
+		){
+		
+		return new  RedirectView ("/"+ViewRouteHelper.LOCAL_STOCK+"/"+idSucursalActual);
+	}
+
 }

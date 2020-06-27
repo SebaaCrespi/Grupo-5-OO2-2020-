@@ -19,12 +19,14 @@
 			<input type="text" th:field="*{cantidad}" />
 			
 			<label>VENDEDOR</label>
-			<select th:field="*{vendedorAuxiliar.idPersona}">
+			<!--<select th:field="*{vendedorAuxiliar.idPersona}">
 				<option th:each="v : ${vendedor}" th:value="${v.idPersona}"
 					th:text="${v.nombre+''+v.apellido}">
-					</option>
-			</select> 
-					
+				</option>
+			</select> -->
+			<select th:field="*{sucursal.id}" style="display: none;">
+				<option value="5"></option>
+			</select>	
 			<input type="submit" value="Crear" />
 		</form>
 	</div>

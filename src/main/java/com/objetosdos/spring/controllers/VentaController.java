@@ -50,14 +50,12 @@ public class VentaController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
 		return mAV;
 	}
-	
+	/*
 	@GetMapping("/new/{id_sucursal}/{id_vendedor}")
 	public ModelAndView newVenta(@PathVariable("id_sucursal") int id_sucursal, @PathVariable("id_vendedor") int id_vendedor) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
 		return mAV;
 	}
-	
-	*/
 	/*@GetMapping("/new")
 	public ModelAndView newSucursal(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);

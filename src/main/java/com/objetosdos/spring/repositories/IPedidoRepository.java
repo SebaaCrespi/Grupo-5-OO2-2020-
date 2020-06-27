@@ -12,10 +12,10 @@ import com.objetosdos.spring.models.PedidoModel;
 
 @Repository
 public interface IPedidoRepository extends JpaRepository<Pedido, Serializable> {
-	
-	 public abstract Pedido findByIdPedido(int id);
-	 
-	 @Query("FROM Pedido p JOIN p.vendedorAuxiliar v JOIN v.sucursal s WHERE p.aceptado = true and s.id = (:id)")
-	public abstract List<Pedido> traerPedidosPorSucursal(int id);
 
+  	public abstract Pedido findByIdPedido(int id);
+	
+	  @Query("FROM Pedido p JOIN p.vendedorAuxiliar v JOIN v.sucursal s WHERE s.id = (:id)")
+    public abstract List<Pedido> traerPedidosPorSucursal(int id);
+  
 }

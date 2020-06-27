@@ -45,6 +45,12 @@ public class SucursalModel {
 	public void setGerente(GerenteModel gerente) {
 		this.gerente = gerente;
 	}
+
+	@Override
+	public String toString() {
+		return "SucursalModel [gerente=" + gerente + ", id=" + id + ", telefono=" + telefono + ", ubicacion="
+				+ ubicacion + "]";
+	}
 	
 	/*
 	public Set<VendedorModel> getLstVendedor() {

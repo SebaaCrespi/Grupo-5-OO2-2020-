@@ -7,8 +7,18 @@
     <div th:each="s,i : ${sucursales}">
         <th:block th:each="ubicacion,iter : ${s.ubicacion}">
         <p style="display: inline-block" th:text="${ubicacion.ciudad}"></p><p style="display: inline-block; margin-left:5px;"> (<span th:text="${distancias[i.index]}"></span> km)</p>
-        <th:block th:if= "${!iter.last}"><th:block>
-        <a href="#">Solicitar stock</a>
+        <th:block th:if= "${!iter.last}"></th:block></th:block>
+        <div th:each="l: ${lotes}" th:if="${l.sucursal.id == s.id}" style="display: inline-block;">
+            <form th:action="@{/pedido/create/solicitud/15}" th:object="${pedido}" method="POST"> 
+                <input th:type="number" th:max="${l.cantidadActual}" th:field="*{cantidad}">
+                <select th:field="*{lote.idLote}" style="display: none;">
+                    <option th:value="${l.idLote}"></option>
+                </select>
+                <select th:field="*{sucursal.id}" style="display: none;">
+                    <option th:value="${idSucursalPedido}"></option>
+                </select>
+                <input th:type="submit" value="Solicitar Stock">
+            </form>
+        </div>
     </div>
-    
 </div>
