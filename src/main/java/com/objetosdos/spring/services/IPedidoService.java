@@ -12,10 +12,12 @@ public interface IPedidoService {
 	public boolean insertOrUpdate(PedidoModel pedidoModel);
 	    
 	public boolean stockDisponible(PedidoModel pedidoModel);
-
-	public PedidoModel findById(int id);
+  
+  public PedidoModel findById(int id);
 	
 	public boolean delete(int id);
 
 	public List<Pedido> getPedidoSucursal(int id);
+
+
 }

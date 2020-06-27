@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import com.objetosdos.spring.helper.ViewRouteHelper;
 import com.objetosdos.spring.services.IClienteService;
+import com.objetosdos.spring.services.IPedidoService;
 import com.objetosdos.spring.services.IVendedorService;
 import com.objetosdos.spring.services.IVentaService;
 
@@ -17,12 +18,12 @@ public class VentaController {
 
 	@Autowired
 	private IVentaService ventaService;
-	
 	@Autowired
 	private IVendedorService vendedorService;
-	
 	@Autowired
 	private IClienteService clienteService;
+	@Autowired
+	private IPedidoService pedidoService;
 	
 	@GetMapping("")
 	public ModelAndView index() {
@@ -32,6 +33,18 @@ public class VentaController {
 		return mAV;
 	}
 	
+	@GetMapping("/{id_sucursal}")
+	public ModelAndView newVenta(@PathVariable("id_sucursal") int id_sucursal){
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
+		mAV.addObject("pedido", pedidoService.getPedidoSucursal(id_sucursal));
+		System.out.println(pedidoService.getPedidoSucursal(id_sucursal));
+		mAV.addObject("return" , ViewRouteHelper.ROUTE);
+		return mAV;
+	}
+	
+	/*
+	 * 
+	 * 
 	@GetMapping("new/{id_sucursal}")
 	public ModelAndView newVenta(@PathVariable("id_sucursal") int id_sucursal) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
@@ -43,8 +56,6 @@ public class VentaController {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VENTA_NEW);
 		return mAV;
 	}
-	*/
-	
 	/*@GetMapping("/new")
 	public ModelAndView newSucursal(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LOCAL_NEW);

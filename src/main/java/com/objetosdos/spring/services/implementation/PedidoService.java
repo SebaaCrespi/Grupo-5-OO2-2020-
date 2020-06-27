@@ -1,20 +1,26 @@
 package com.objetosdos.spring.services.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.objetosdos.spring.converters.PedidoConverter;
+import com.objetosdos.spring.converters.ProductoConverter;
 import com.objetosdos.spring.entities.Lote;
 import com.objetosdos.spring.entities.Pedido;
+
+import com.objetosdos.spring.entities.Sucursal;
+import com.objetosdos.spring.entities.Vendedor;
+import com.objetosdos.spring.models.LoteModel;
+
 import com.objetosdos.spring.models.PedidoModel;
 import com.objetosdos.spring.repositories.ILoteRepository;
 import com.objetosdos.spring.repositories.IPedidoRepository;
+import com.objetosdos.spring.repositories.IVendedorRepository;
 import com.objetosdos.spring.services.ILoteService;
 import com.objetosdos.spring.services.IPedidoService;
-
-
 
 @Service
 public class PedidoService implements IPedidoService {
@@ -89,3 +95,4 @@ public class PedidoService implements IPedidoService {
         return pedidoRepository.traerPedidosPorSucursal(id);
     }
 }
+

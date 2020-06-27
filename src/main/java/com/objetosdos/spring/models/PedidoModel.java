@@ -70,7 +70,8 @@ public class PedidoModel {
 	public void setSucursal(SucursalModel sucursal) {
 		this.sucursal = sucursal;
 	}
-
+	
+	
 	@Override
 	public String toString() {
 		return "PedidoModel [aceptado=" + aceptado + ", cantidad=" + cantidad + ", idPedido=" + idPedido + ", lote="

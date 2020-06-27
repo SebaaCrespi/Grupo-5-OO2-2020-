@@ -26,7 +26,9 @@ public class PedidoController {
 	@Autowired
 	private ILoteService loteService;
 	@Autowired
-	private IVendedorService vendedorService;
+  private IProductoService productoService;
+	@Autowired
+  private IVendedorService vendedorService;
 	
 	
 	@GetMapping("")
@@ -39,6 +41,7 @@ public class PedidoController {
 		mAV.addObject("return", ViewRouteHelper.ROUTE);
 	    return mAV;
 	}
+	
 	@GetMapping("/new")
 	public ModelAndView newPedido(){
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PEDIDO_NEW);
